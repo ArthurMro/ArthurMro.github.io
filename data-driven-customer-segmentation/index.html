@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>how to make data-driven customer segmentation with Excel</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="../assets/css/app.css@v=ae11527b2d.css" as="style" />
+    <link rel="preload" href="../assets/js/manifest.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../assets/js/vendor.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../assets/js/app.js@v=ae11527b2d" as="script" />
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css@v=ae11527b2d.css" as="style" />
+  <link rel="preload" href="../assets/js/post.js@v=ae11527b2d" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2@v=ae11527b2d") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2@v=ae11527b2d") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2@v=ae11527b2d") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot@101fc3%253Fv=ae11527b2d");
+        src: url("../assets/fonts/icomoon/icomoon.eot@101fc3") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf@101fc3%253Fv=ae11527b2d") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff@101fc3%253Fv=ae11527b2d") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg@101fc3") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css@v=ae11527b2d.css" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css@v=ae11527b2d.css" media="screen" />
+
+
+    
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Arthur Moreau&#x27;s blog" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="how to make data-driven customer segmentation with Excel" />
+    <meta property="og:description" content="Step-by-step guide to create an actionable data-driven customer segmentation and analyze it by using only with excel or Google sheet. To complete this tutorial, you need data about your customers, the time and the amount of their purchases and a good 15 minutes of focus.  Customer segmentation is crucial information" />
+    <meta property="og:url" content="http://localhost:2368/data-driven-customer-segmentation/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2021/05/excel-16x9-1.jpg" />
+    <meta property="article:published_time" content="2021-02-11T21:59:47.000Z" />
+    <meta property="article:modified_time" content="2021-05-13T19:02:43.000Z" />
+    <meta property="article:tag" content="customer segmentation" />
+    <meta property="article:tag" content="data-driven" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="how to make data-driven customer segmentation with Excel" />
+    <meta name="twitter:description" content="Step-by-step guide to create an actionable data-driven customer segmentation and analyze it by using only with excel or Google sheet. To complete this tutorial, you need data about your customers, the time and the amount of their purchases and a good 15 minutes of focus.  Customer segmentation is crucial information" />
+    <meta name="twitter:url" content="http://localhost:2368/data-driven-customer-segmentation/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2021/05/excel-16x9-1.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Arthur Moreau" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="customer segmentation, data-driven" />
+    <meta name="twitter:site" content="@ghost" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1125" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Arthur Moreau&#x27;s blog",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Arthur Moreau",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "http://localhost:2368/author/arthur/",
+        "sameAs": []
+    },
+    "headline": "how to make data-driven customer segmentation with Excel",
+    "url": "http://localhost:2368/data-driven-customer-segmentation/",
+    "datePublished": "2021-02-11T21:59:47.000Z",
+    "dateModified": "2021-05-13T19:02:43.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2021/05/excel-16x9-1.jpg",
+        "width": 2000,
+        "height": 1125
+    },
+    "keywords": "customer segmentation, data-driven",
+    "description": "Step-by-step guide to create an actionable data-driven customer segmentation and\nanalyze it by using only with excel or Google sheet. To complete this tutorial,\nyou need data about your customers, the time and the amount of their purchases \nand a good 15 minutes of focus.\n\nCustomer segmentation is crucial information for marketers. Indeed, it is\ndifficult to make individual communication as soon as you have more than 20\ncustomers, and even harder to spot your best customers in one blink.\n\nIntere",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.41" />
+    <link rel="alternate" type="application/rss+xml" title="Arthur Moreau&#x27;s blog" href="../rss.2" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168098396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-168098396-1');
+</script>
+<style>
+    
+.site-main {
+    background: #0D0630;
+} 
+.site-nav-main{
+    background: #0D0630; 
+}
+.page-template .site-main, .post-full-content, .post-template .site-main, .site-main {
+    background: #0D0630;
+}
+.site-header-background {
+    background: #0D0630;
+}
+.site-nav {
+    background: #0D0630;
+}
+    
+.site-header-background:not(.responsive-header-img) .site-nav-left-wrapper:after, .site-nav-main .site-nav-left-wrapper:after {
+    background: linear-gradient(90deg,rgba(9,10,11,0) 0,#0D063000);
+}
+
+.site-nav-main .site-nav-left-wrapper:after {
+    right: 0;
+    background: linear-gradient(to right, color(#0D0630 l(-5%) a(0)) 0%,color(#0D0630 l(-5%)) 0%);
+}
+.site-archive-header .no-image{
+    background: #0D0630;
+    }
+.post-feed {
+    background: #0D0630;
+}
+.read-next {
+    background:     #0D0630;
+}
+.read-next-card {
+    background: #0D0630; 
+}    
+.site-footer{
+    background: #0D0630;
+}
+    
+.subscribe-overlay {      
+     border: 1px solid;
+     background: #0D0630;
+}
+.subscribe-form {
+    border: 1px solid;
+    background: #0D0630;
+}
+.subscribe-email {
+    border: 1px solid;
+    background: #0D0630;
+}
+.subscribe-overlay .subscribe-email {
+    border: 1px solid;  
+}
+.subscribe-form button {
+    height: 46px;      
+}
+.subscribe-form-title {
+   color: rgba(255, 255, 255, 0.75); 
+}
+    
+.post-full-title {
+    color: rgba(255, 255, 255, 0.75);
+}
+    .post-feed  {
+        background: #0D0630;
+    }
+    .post-card-excerpt {
+        color: rgba(255, 255, 255, 0.75);
+    }
+.post-card-title {
+    color: rgba(255, 255, 255, 0.75);
+    }
+
+    .post-full-content {
+    color: rgba(255, 255, 255, 0.75);
+    background: #0D0630;
+    }
+
+    .post-full-custom-excerpt {
+    color: rgba(255, 255, 255, 0.75);
+    }
+    .post-full-content code {
+        color: #fff;
+        background: #0D0630;
+    }
+    
+.post-full-byline-meta h4 a {
+    color: rgba(255, 255, 255, 0.75);
+}
+.post-full-content a {
+    color: rgba(255, 255, 255, 0.75);
+    word-break: break-word;
+    box-shadow: var(--darkgrey) 0 -1px 0 inset;
+    transition: all 0.2s ease-in-out;
+}
+.post-full-content strong,
+.post-full-content em {
+    color: rgba(255, 255, 255, 0.75);
+}
+    
+.post-full-content h1,
+.post-full-content h2,
+.post-full-content h3,
+.post-full-content h4,
+.post-full-content h5,
+.post-full-content h6 {
+    color: rgba(255, 255, 255, 0.75);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+    
+.site-archive-header .no-image {
+    color: rgba(255, 255, 255, 0.75);
+}
+    
+.no-image .author-social-link a {
+    color: rgba(255, 255, 255, 0.75);
+}
+.post-card-byline-content a {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+}
+    
+@media  {
+.page-template .site-main, .post-full-content, .post-template .site-main, .site-main {
+    background: #0D0630;
+    }
+.post-full-custom-excerpt {     
+    color: rgba(255, 255, 255, 0.75);
+    }
+}
+   
+</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://localhost:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="post-template tag-customer-segmentation tag-data-driven">
+    
+
+
+
+  
+<header class="m-header with-picture js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../index.html" class="m-site-name in-mobile-topbar">
+        Arthur Moreau&#x27;s blog
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-site-name in-desktop-menu">
+                    Arthur Moreau&#x27;s blog
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="../index.html">Home</a>
+    </li>
+    <li class="nav-author">
+      <a href="../about/index.html">Author</a>
+    </li>
+    <li class="nav-contact">
+      <a href="../contact/index.html">Contact</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="../data-petrol/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/data-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="If data is petrol...">
+                                      If data is petrol...
+                                    </h3>
+                                    <span class="m-recent-article__date">20 hours ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/excel-16x9-1.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="how to make data-driven customer segmentation with Excel">
+                                      how to make data-driven customer segmentation with Excel
+                                    </h3>
+                                    <span class="m-recent-article__date">3 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../forecasting-web-traffic/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/google-and-python-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Forecasting web traffic with Python and Google Analytics">
+                                      Forecasting web traffic with Python and Google Analytics
+                                    </h3>
+                                    <span class="m-recent-article__date">7 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../growth-hacking-beyond-bullshit/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/growth-hacking-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Growth Hacking: beyond the bullsh*t">
+                                      Growth Hacking: beyond the bullsh*t
+                                    </h3>
+                                    <span class="m-recent-article__date">a year ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/google-analytics/index.html">Google Analytics</a>
+                            </li>
+                            <li>
+                              <a href="../tag/growth-hacking/index.html">Growth Hacking</a>
+                            </li>
+                            <li>
+                              <a href="../tag/machine-learning/index.html">Machine learning</a>
+                            </li>
+                            <li>
+                              <a href="../tag/marketing/index.html">Marketing</a>
+                            </li>
+                            <li>
+                              <a href="../tag/predictive-modeling/index.html">Predictive modeling</a>
+                            </li>
+                            <li>
+                              <a href="../tag/customer-segmentation/index.html">customer segmentation</a>
+                            </li>
+                            <li>
+                              <a href="../tag/data-driven/index.html">data-driven</a>
+                            </li>
+                            <li>
+                              <a href="../tag/forecasting/index.html">forecasting</a>
+                            </li>
+                            <li>
+                              <a href="../tag/prediction/index.html">prediction</a>
+                            </li>
+                            <li>
+                              <a href="../tag/time-series/index.html">time series</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-aos="fade">
+    <div class="m-hero__picture in-post">
+      <img
+        srcset="../content/images/size/w300/2021/05/excel-16x9-1.jpg-16x9-1.jpg 300w../content/images/size/w600/2021/05/excel-16x9-1.jpgl-16x9-1.jpg 600../content/images/size/w1000/2021/05/excel-16x9-1.jpgel-16x9-1.jpg 100../content/images/size/w2000/2021/05/excel-16x9-1.jpgcel-16x9-1.jpg 2000w
+        "
+        sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+        src="../content/images/size/w1000/2021/05/excel-16x9-1.jpg"
+        alt=""
+      />
+    </div>
+    </section>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up"
+          data-aos-delay="300">
+          <div
+            class="l-post-content   js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">how to make data-driven customer segmentation with Excel</h1>
+              <div class="m-heading__meta">
+                  <a href="../tag/customer-segmentation/index.html" class="m-heading__meta__tag">customer segmentation</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">Feb 11, 2021</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/data-driven-customer-segmentation/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=how%20to%20make%20data-driven%20customer%20segmentation%20with%20Excel&url=http://localhost:2368/data-driven-customer-segmentation/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!--kg-card-begin: html-->
+<p><em>Step-by-step guide to create an actionable data-driven customer segmentation and analyze it by using<em> only with excel or Google sheet</em>.</em> <em>To complete this tutorial, you need data about your customers, the time and the amount of their purchases</em> <em>and a good 15 minutes of focus.</em></p>
+
+
+
+<p>Customer segmentation is crucial information for marketers. Indeed, it is difficult to make individual communication as soon as you have more than 20 customers, and even harder to spot your best customers in one blink.</p>
+
+
+
+<p>Interestingly enough, the method to do customer segmentation differs widely from one industry to another. In the marketing world, it will often boil down to a post-it session coupled with gut instincts. But from my experience, it doesn&#8217;t create insights that are not actionable in day-to-day operations.</p>
+
+
+
+<p> On the other hand, the academic world has, <a href="https://www.sciencedirect.com/science/article/pii/S1877050910003868">since more than 10 years</a>, <a href="https://www.sciencedirect.com/science/article/pii/S1877050910003868">covered data-driven</a> <a href="https://link.springer.com/article/10.1057/dbm.2012.17">segmentation methods</a>. The most known segmentation is the <em>RFM analysis</em>, a classic case-study for young data apprentice, but almost unknown from the top marketing experts.  </p>
+
+
+
+<p>So I decided to break the wall between these two silos and create a data-driven method using a tool that the marketers master as much as the data guys: Excel.</p>
+
+
+
+<p>Excel is far to be my favorite tool, but it stays the most used tool for data analytics in the world. As a data scientist I challenged myself to walk in the shoes of the marketer by using only Excel, where I would usually use other tools.</p>
+
+
+
+<p>What I thought would have been a stroll, was actually a stroll with a twisted ankle through a jungle forest. But now, the path is laid and signposted so following it will indeed be a stroll.</p>
+
+
+
+<p>I will here work with Shopify data but the steps are the same for every e-commerce platform. Arm yourself with an excel, and let&#8217;s dive into this 15 minutes stroll.</p>
+
+
+
+<p>Here are the steps:</p>
+
+
+
+<ol><li>Import data</li><li>Clean data</li><li>Merge data</li><li>Transform data</li><li>Plot data</li><li>Analysis</li><li>BONUS: Going further with Machine learning</li></ol>
+
+
+
+<h2>1. Import data</h2>
+
+
+
+<p>Before starting importing the data, it&#8217;s important to know what we need. Our goal is to create one RFM profile per user. RFM stands for:</p>
+
+
+
+<ul><li>Recency: when did they buy last</li><li>Frequency: how many orders did they make</li><li>Monetary: How much money did they spend in total</li></ul>
+
+
+
+<p>By compiling these 3 characteristics for each user, we can easily segment them. Now let&#8217;s fetch the data we need for this analysis. Importing the right data is an easy and well documented step. For instance, <a href="https://help.shopify.com/en/manual/orders/export-orders">Shopify helps you to download a CSV of your orders and customers.</a> And <a href="https://nl.wordpress.org/plugins/order-import-export-for-woocommerce/">Woocommerce allows it with plugins</a>.</p>
+
+
+
+<p>While creating the export, it&#8217;s important to have the following data:</p>
+
+
+
+<ul><li>In the customer file: <ul><li>customer_id or id</li><li>order_count</li><li>total_spent (or, for other platform than Shopify, the sum of every euro spent)</li></ul></li><li>In the order file: <ul><li>customer_id </li><li>order_date</li></ul></li></ul>
+
+
+
+<p>Now we need to put this CSV in a classic Excel format. This can be done easily in Excel and Google Sheet:</p>
+
+
+
+<ul><li>Excel: Data &gt; import CSV</li><li>Google sheet: Open with Google sheet. If you see only rows and one column, Data &gt; split text into columns</li></ul>
+
+
+
+<h2>2. Cleaning data</h2>
+
+
+
+<p>This very important step will avoid cluttered data and &#8220;bad&#8221; data. We will perform the same in the two separates sheets.</p>
+
+
+
+<p>First of all, just put the data files in two sheets of one excel. This will greatly simplify the work. So we should have two sheets:</p>
+
+
+
+<ul><li>the &#8220;FM&#8221; (for Frequency and Monetary) sheet with customer_id, order_count and total_spent</li><li>the &#8220;R&#8221; (for Recency) with order sheet with customer-id and order_date.</li></ul>
+
+
+
+<h3>2.1 Getting rid of the clutter</h3>
+
+
+
+<p>For the sake of the exercise, we will start by uncluttering the two sheets. Simply open the excel and remove all the columns to only keep:</p>
+
+
+
+<ul><li>On the 1st sheet &#8220;FM&#8221;:<ul><li>customer_id</li><li>orders_count</li><li>total_spent</li></ul></li><li>On the second sheet &#8220;R&#8221;:<ul><li>customer_id </li><li>order date</li></ul></li></ul>
+
+
+
+<p>For the sake of simplicity, let&#8217;s remove discount, taxes and shipping columns as they are already included in total_spent.</p>
+
+
+
+<p>Be certain that the customer_id is properly linked to the right person. To do so, have a list customer_id and name on the side (for instance, a shopify tab open in the browser) and cross-check to avoid using another id (such as order_id).</p>
+
+
+
+<p>After removing the unnecessary columns, we will remove the missing data:</p>
+
+
+
+<div class="wp-block-image"><figure class="alignleft size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2021/02/image-5.png" alt="" class="wp-image-589" width="325" height="231" srcset="../content/images/wordpress/2021/02/image-5.png 242w, ../content/images/wordpress/2021/02/image-5-150x107.png 150w" sizes="(max-width: 325px) 100vw, 325px" /><figcaption>Sorting ascending and descending in excel</figcaption></figure></div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2021/02/image-4.png" alt="" class="wp-image-588" width="185" height="342" srcset="../content/images/wordpress/2021/02/image-4.png 325w, ../content/images/wordpress/2021/02/image-4-163x300.png 163w, ../content/images/wordpress/2021/02/image-4-81x150.png 81w" sizes="(max-width: 185px) 100vw, 185px" /><figcaption>The equivalent sorting in Google Sheet</figcaption></figure></div>
+
+
+
+<ul><li>Press A -&gt; Z and Z-&gt;A in each column to make the empty cells appear on top.</li><li>For each column decide to remove the empty cells/outliers.</li></ul>
+
+
+
+<p>By simply performing this sort ascending/descending, we will unveil the extreme lows and highs. This already gives very valuable business insights. For instance, in my case I quickly realized that:</p>
+
+
+
+<ul><li>We lost money (negative total_spent) on 0.2% of the clients. It&#8217;s a marginal amount so I will just delete these rows.</li><li>6.3% of the clients paid 0. That&#8217;s to be removed too. It&#8217;s worth keeping in mind to re-target them, but let&#8217;s keep that out of this analysis.</li><li>0.06% had zero order, but had still paid some money. That&#8217;s probably interesting to raise in the team. But again, it&#8217;s out of the analysis so I removed it.</li><li>Also, I got rid of your team members. Check in Shopify their customer number and remove them from the list, as it was probably test orders.</li><li>I found one outlier who was 450 times the average order price. I double checked to verify that it was not a mistake but not, it was well a real client.</li></ul>
+
+
+
+<h3>2.2 First data transformation</h3>
+
+
+
+<h4>2.2.1. Recency</h4>
+
+
+
+<p>We&#8217;ll first take care of the 2nd sheet: Recency. Our goal is to transform it and have as results two columns: the customer_id and the date of their last order. In other words, how recently they bought.</p>
+
+
+
+<h5>A. <strong>Change data type</strong></h5>
+
+
+
+<p>First we will change the data type from number to date. In order to do so start by freezing the first row, that will make the work easier (View&gt;freeze first row)</p>
+
+
+
+<div class="wp-block-image"><figure class="alignleft size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2021/01/image.png" alt="View freeze in Excel" class="wp-image-569" width="233" height="128" srcset="../content/images/wordpress/2021/01/image.png 363w, ../content/images/wordpress/2021/01/image-300x164.png 300w, ../content/images/wordpress/2021/01/image-150x82.png 150w" sizes="(max-width: 233px) 100vw, 233px" /><figcaption>Excel Freeze</figcaption></figure></div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2020/12/image-6.png" alt="view freeze in Google Sheet" class="wp-image-551" width="275" height="219" srcset="../content/images/wordpress/2020/12/image-6.png 577w, ../content/images/wordpress/2020/12/image-6-300x239.png 300w, ../content/images/wordpress/2020/12/image-6-150x120.png 150w" sizes="(max-width: 275px) 100vw, 275px" /><figcaption>Google sheet, freeze the first row</figcaption></figure></div>
+
+
+
+<p>Then we have a small hiccups: Shopify writes the data with a +0000 representing the hour offset. For our exercise we will just keep year, month and date, so we need to get rid of it. To remove it use Data&gt; split text to column (detect automatically) to remove the +0000 and the hour. </p>
+
+
+
+<div class="wp-block-image"><figure class="alignleft size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2021/01/image-5.png" alt="Getting the recency for the data-driven customer segmentation in Excel" class="wp-image-574" width="301" height="68" srcset="../content/images/wordpress/2021/01/image-5.png 542w, ../content/images/wordpress/2021/01/image-5-300x67.png 300w, ../content/images/wordpress/2021/01/image-5-150x33.png 150w" sizes="(max-width: 301px) 100vw, 301px" /><figcaption>Excel: text to column</figcaption></figure></div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2020/12/image-7.png" alt="Getting the recency for the data-driven customer segmentation in Google Sheet" class="wp-image-552" width="168" height="449" srcset="../content/images/wordpress/2020/12/image-7.png 325w, ../content/images/wordpress/2020/12/image-7-112x300.png 112w, ../content/images/wordpress/2020/12/image-7-56x150.png 56w" sizes="(max-width: 168px) 100vw, 168px" /><figcaption>Google sheet: Split text to column</figcaption></figure></div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="342" height="380" src="../content/images/wordpress/2021/01/image-6.png" alt="Split text" class="wp-image-575" srcset="../content/images/wordpress/2021/01/image-6.png 342w, ../content/images/wordpress/2021/01/image-6-270x300.png 270w, ../content/images/wordpress/2021/01/image-6-135x150.png 135w" sizes="(max-width: 342px) 100vw, 342px" /><figcaption>Excel split with space</figcaption></figure></div>
+
+
+
+<p>Once this is done, it&#8217;s really easy to change the format year-month-day in date format.</p>
+
+
+
+<div class="wp-block-image"><figure class="alignleft size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2021/02/image-6.png" alt="Data formating in excel" class="wp-image-590" width="179" height="330" srcset="../content/images/wordpress/2021/02/image-6.png 309w, ../content/images/wordpress/2021/02/image-6-163x300.png 163w, ../content/images/wordpress/2021/02/image-6-81x150.png 81w" sizes="(max-width: 179px) 100vw, 179px" /><figcaption>In excel&#8217;s top ribbon, tab Home,  you can change the data format</figcaption></figure></div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2020/12/image-8.png" alt="Date formating in Google Sheet" class="wp-image-553" width="281" height="368" srcset="../content/images/wordpress/2020/12/image-8.png 646w, ../content/images/wordpress/2020/12/image-8-229x300.png 229w, ../content/images/wordpress/2020/12/image-8-114x150.png 114w" sizes="(max-width: 281px) 100vw, 281px" /><figcaption>Google sheet change format</figcaption></figure></div>
+
+
+
+<h5>B. Sorting max order</h5>
+
+
+
+<p>We will have to create a pivot table for this. Let&#8217;s start by selecting all data. Then press Data&gt;pivot table. We&#8217;ll make it in a new sheet</p>
+
+
+
+<div class="wp-block-image"><figure class="alignleft size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2021/01/image-2.png" alt="" class="wp-image-571" width="305" height="115" srcset="../content/images/wordpress/2021/01/image-2.png 372w, ../content/images/wordpress/2021/01/image-2-300x113.png 300w, ../content/images/wordpress/2021/01/image-2-150x56.png 150w" sizes="(max-width: 305px) 100vw, 305px" /><figcaption>Excel: pivot</figcaption></figure></div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2020/12/image-9.png" alt="" class="wp-image-554" width="179" height="475" srcset="../content/images/wordpress/2020/12/image-9.png 321w, ../content/images/wordpress/2020/12/image-9-113x300.png 113w, ../content/images/wordpress/2020/12/image-9-56x150.png 56w" sizes="(max-width: 179px) 100vw, 179px" /><figcaption>Google sheet: Let&#8217;s create a pivot table</figcaption></figure></div>
+
+
+
+<p>A pivot table is a table of statistics that summarizes the data. Concretely, we have now all the dates of all orders, but just want the latest date per customer.</p>
+
+
+
+<p>For excel, those are two simple steps:</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="230" height="357" src="../content/images/wordpress/2021/01/image-4.png" alt="Creating pivot table excel" class="wp-image-573" srcset="../content/images/wordpress/2021/01/image-4.png 230w, ../content/images/wordpress/2021/01/image-4-193x300.png 193w, ../content/images/wordpress/2021/01/image-4-97x150.png 97w" sizes="(max-width: 230px) 100vw, 230px" /><figcaption>Excel step 1</figcaption></figure></div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="418" height="395" src="../content/images/wordpress/2021/01/image-3.png" alt="Choose the summarize by value option" class="wp-image-572" srcset="../content/images/wordpress/2021/01/image-3.png 418w, ../content/images/wordpress/2021/01/image-3-300x283.png 300w, ../content/images/wordpress/2021/01/image-3-150x142.png 150w" sizes="(max-width: 418px) 100vw, 418px" /><figcaption>Excel step 2</figcaption></figure></div>
+
+
+
+<p>And for the Google Sheet users, it&#8217;s a bit more complex:</p>
+
+
+
+<p>When we create our pivot table, a panel will appear on the left. We need to format our pivot as follow: <br>&#8211; Row: add > customer_id</p>
+
+
+
+<p>For the value it will be slightly harder. We need to have the latest date, or in numerical language, the max date.<br>&#8211; Value: max(created_at)</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="290" height="183" src="../content/images/wordpress/2020/12/image-1.png" alt="Choose the right filters" class="wp-image-544" srcset="../content/images/wordpress/2020/12/image-1.png 290w, ../content/images/wordpress/2020/12/image-1-150x95.png 150w" sizes="(max-width: 290px) 100vw, 290px" /><figcaption>First click on Created_at</figcaption></figure></div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="282" height="150" src="../content/images/wordpress/2020/12/image.png" alt="Create max value" class="wp-image-543" srcset="../content/images/wordpress/2020/12/image.png 282w, ../content/images/wordpress/2020/12/image-150x80.png 150w" sizes="(max-width: 282px) 100vw, 282px" /><figcaption>Then summarized by max</figcaption></figure></div>
+
+
+
+<p>In case you have more than 50 000 customers, you will see this appearing.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="431" height="175" src="../content/images/wordpress/2020/12/image-2.png" alt="Error from Google Sheet" class="wp-image-545" srcset="../content/images/wordpress/2020/12/image-2.png 431w, ../content/images/wordpress/2020/12/image-2-300x122.png 300w, ../content/images/wordpress/2020/12/image-2-150x61.png 150w" sizes="(max-width: 431px) 100vw, 431px" /><figcaption>This is what you see if you have more than 50 000 customers</figcaption></figure></div>
+
+
+
+<p>No big deal. Just scroll until the bottom of the excel sheet and click &#8220;add x more rows&#8221; depending on the amount of customers.</p>
+
+
+
+<p>And now we see, on the excel or Google Sheet, a date for each user. This is the date of their last order. Congratulations, you have already very valuable information as such! You are getting closer to your data-driven customer segmentation.</p>
+
+
+
+<h2>3. Merging the sheets</h2>
+
+
+
+<p>Our final goal is to have one sheet with the 3 dimensions R, F &amp; M per customer. In this step, we will merge all data in one sheet, which requires something slightly more complex than a simple copy-paste.</p>
+
+
+
+<p>Going back to our Recency sheet, we want to get rid of the formula attached to the cells and just work with the values. A simple way to do so is to copy your whole value and then paste the values only. Copy the values in a new sheet and call it &#8220;R_values&#8221;; it will help us later.</p>
+
+
+
+<div class="wp-block-image"><figure class="alignleft size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2021/02/image-7.png" alt="Pasting value only excel" class="wp-image-592" width="233" height="281" srcset="../content/images/wordpress/2021/02/image-7.png 515w, ../content/images/wordpress/2021/02/image-7-249x300.png 249w, ../content/images/wordpress/2021/02/image-7-125x150.png 125w" sizes="(max-width: 233px) 100vw, 233px" /><figcaption>Paste value only in Excel</figcaption></figure></div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2020/12/image-10.png" alt="Pasting values only Google Sheet" class="wp-image-555" width="310" height="239" srcset="../content/images/wordpress/2020/12/image-10.png 631w, ../content/images/wordpress/2020/12/image-10-300x231.png 300w, ../content/images/wordpress/2020/12/image-10-150x116.png 150w" sizes="(max-width: 310px) 100vw, 310px" /><figcaption>Pasting the values only in Google Sheet</figcaption></figure></div>
+
+
+
+<p></p>
+
+
+
+<p>Now we want to merge these two sheets that we have. The great thing is that in both sheets, the &#8220;RM&#8221; and &#8220;F&#8221;, we have a customer_id. That&#8217;s what we will use as anchor with the VLOOKUP formula.</p>
+
+
+
+<p>We will write this formula in the second cell (as the first cell if for the name of the column) of the 4th column of our customer sheet. It goes as such:</p>
+
+
+
+<pre class="wp-block-code"><code>= VLOOKUP(A2,R_values!A:B,2)</code></pre>
+
+
+
+<p><br>Out of this formula, if you followed the previous steps, don&#8217;t have to change anything. Still here what the arguments mean, in order:</p>
+
+
+
+<ol><li><strong>A2</strong> = my first variable (=the first customer_id)</li><li><strong>R_values</strong> = the sheet where we pasted the value from the pivot table. It is followed by<em> </em><strong>!A:B</strong> which means that we take the 2 first columns. </li><li><strong>2</strong> = the index (= the name of the column of the value to pick, here it&#8217;s 2 as the 2nd is the one with the date of the latest order).</li></ol>
+
+
+
+<p>And after we did it for one cell, we just need to double-click on the corner of the cell to extend it for all cells of the column.</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="111" height="30" src="../content/images/wordpress/2020/12/image-3.png" alt="extending cells" class="wp-image-546"/><figcaption>Double click on the big blue square to extend the formula.</figcaption></figure></div>
+
+
+
+<p>All rigth we are all set! We have now one beautiful clean sheet with 4 columns: the customer_id, the order_count, the total_spent and the last one that I named &#8220;latest_order&#8221;. We are reaching the end.</p>
+
+
+
+<figure class="wp-block-image size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2020/12/image-11.png" alt="Columns used for data-driven customer segmentation" class="wp-image-556" width="427" height="122" srcset="../content/images/wordpress/2020/12/image-11.png 633w, ../content/images/wordpress/2020/12/image-11-300x86.png 300w, ../content/images/wordpress/2020/12/image-11-150x43.png 150w" sizes="(max-width: 427px) 100vw, 427px" /><figcaption>Your final result should look like that</figcaption></figure>
+
+
+
+<h2>4. Transforming the data</h2>
+
+
+
+<p>Remember that the goal is to give 3 score per user:</p>
+
+
+
+<ul><li>Monetary score: how much they paid</li><li>Recency score: how recently did they purchase</li><li>Frequency score: how many order did they do</li></ul>
+
+
+
+<p>But these scores, unless grouped together, will stay individual characteristics and not actionable segments. So we will need to create brackets of scores and merge them to create a handful of customer segments.</p>
+
+
+
+<h3>4.1 Recency groups</h3>
+
+
+
+<p>We have the date of the latest order, and want to transform that in a score. We will thus convert the latest date in a column representing the amount of days since the last order.</p>
+
+
+
+<p>It&#8217;s a very simple manipulation: we create a  5th column &#8220;Amount of day&#8221; where we write in the second cell (starting from the top):</p>
+
+
+
+<pre class="wp-block-code"><code>= Today() - D2</code></pre>
+
+
+
+<p>D2 is here the first cell of the last_order column. We right click on the bottom right corner of the cell to extend it and here we are! Furthermore,  we will create 3 clusters of users: </p>
+
+
+
+<ul><li>Recent: if they purchased in the last 3 months</li><li>Former: if they purchased between 3 and 12 months ago</li><li>Past: if they purchased more than a year ago</li></ul>
+
+
+
+<p>Simply paste the following in the 6th column &#8220;Recency segments&#8221;:</p>
+
+
+
+<pre class="wp-block-code"><code>= IF(E2 &lt;= 90, "Recent", IF(AND(E2 > 90, E2 &lt; 365), "Former", "Past"))</code></pre>
+
+
+
+<p>Small note for data about EU citizens: After 365 days, it&#8217;s even worth looking whether you can still contact them, as the GDPR might prevent you from doing so.</p>
+
+
+
+<h3>4.2 Frequency groups</h3>
+
+
+
+<p>As we did for recency, we will create groups of users for the Frequency:</p>
+
+
+
+<ul><li>One-time: if they purchased once</li><li>Repeating: Between 1 and 3 purchases</li><li>Recurring: Above 3 purchases</li></ul>
+
+
+
+<pre class="wp-block-code"><code>= IF(B2 = 1, "One-time", IF(AND(B2 > 1, B2 &lt;= 3), "Repeating", "Recurring"))</code></pre>
+
+
+
+<p>Just take care to verify that the column B is well the one for ORDERS_COUNTS and that you cleaned the customers well with 0 purchases.</p>
+
+
+
+<h3>4.3 Monetary groups</h3>
+
+
+
+<p>This section will highly depend on the products you are selling. Whether you are selling unique items or a collection will create huge differences. As such it&#8217;s up to you to decide what the categories are. Here is an example:</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+= IF(B2 &lt;= 10, &quot;Small buyer&quot;, IF(AND(B2 &gt; 10, B2 &lt;= 50), &quot;Convinced user&quot;, &quot;Top customer&quot;))
+</pre>
+
+
+<h3>4.4 Pivot: From individual score to grouped view</h3>
+
+
+
+<p>The next step is to transform this individual data in a grouped view. As we don&#8217;t need the individual data per customer but well the aggregation of the different groups, we will sort it out with another pivot.</p>
+
+
+
+<p>It&#8217;s up to your business choice to create a pivot table using Recency on one side and with Frequency or Monetary on the other (or both one after the other). Unfortunately Excel and Google sheet don&#8217;t allow 3 dimensions graphs, so we can&#8217;t plot R, F &amp; M in one graph. I would recommend to use Recency and Frequency as they are more actionable.</p>
+
+
+
+<p>Here are the settings you need to use:</p>
+
+
+
+<div class="wp-block-image"><figure class="alignleft size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2021/01/image-7.png" alt="Pivot with excel" class="wp-image-576" width="201" height="505" srcset="../content/images/wordpress/2021/01/image-7.png 294w, ../content/images/wordpress/2021/01/image-7-120x300.png 120w, ../content/images/wordpress/2021/01/image-7-60x150.png 60w" sizes="(max-width: 201px) 100vw, 201px" /><figcaption>Excel: how to pivot</figcaption></figure></div>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2020/12/image-13.png" alt="Pivot with Google Sheet" class="wp-image-561" width="243" height="529" srcset="../content/images/wordpress/2020/12/image-13.png 350w, ../content/images/wordpress/2020/12/image-13-138x300.png 138w, ../content/images/wordpress/2020/12/image-13-69x150.png 69w" sizes="(max-width: 243px) 100vw, 243px" /><figcaption>Google sheet: this is your input for the pivot</figcaption></figure></div>
+
+
+
+<p>I personally like very much to have values only. It allows us to work on the data without risking that a change will wreck our calculation. So once I have all these values from the pivot, I copy-pasted (values only) it in a last sheet called &#8220;Final results&#8221;.</p>
+
+
+
+<h2>5. Plotting the data</h2>
+
+
+
+<p>We are now at the very exciting moment where you can see the reality hiding behind the numbers! Our final sheets has a 3&#215;3 grid looking as such:</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="377" height="119" src="../content/images/wordpress/2021/01/image-8.png" alt="Pivot of the data-driven customer segmentation" class="wp-image-577" srcset="../content/images/wordpress/2021/01/image-8.png 377w, ../content/images/wordpress/2021/01/image-8-300x95.png 300w, ../content/images/wordpress/2021/01/image-8-150x47.png 150w" sizes="(max-width: 377px) 100vw, 377px" /><figcaption>Finally our data-driven customer segmentation appears!</figcaption></figure></div>
+
+
+
+<p>And Voila! Here is our graph plotting our customer segmentation! Playing a bit with the graph parameters will give you such a picture.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="603" height="502" src="../content/images/wordpress/2021/02/image-11.png" alt="final colorful customer segmentation" class="wp-image-621" srcset="../content/images/wordpress/2021/02/image-11.png 603w, ../content/images/wordpress/2021/02/image-11-300x250.png 300w, ../content/images/wordpress/2021/02/image-11-150x125.png 150w" sizes="(max-width: 603px) 100vw, 603px" /><figcaption>A colorful data-drive customer segmentation ready for actions!</figcaption></figure>
+
+
+
+<p>Note: I will pretend that I made this graph by plotting our data when in reality I colored the background and typed my answer in. But who would see the difference right?</p>
+
+
+
+<h2>6. Analysis</h2>
+
+
+
+<p>Now what does this beautiful graph say?</p>
+
+
+
+<p><em>Red alert:</em> The are 24 customers that you need to call now! If they leave the boat, that&#8217;s the bottom line who will drown.</p>
+
+
+
+<p><em>Loyal:</em> There are 6 persons which you may want to send a business present (pick a random occasion for it), but don&#8217;t seem to require more attention.</p>
+
+
+
+<p><em>Sleeper:</em> 483, that&#8217;s the amount of email with a coupon that you will send. And hopefully you can bring them back in the promising group.</p>
+
+
+
+<p><em>Promising:</em> These 232, they are just to be watched. And why not send a small emails with news from time to time.</p>
+
+
+
+<p><em>One time buyer:</em> From the 4890 ones who gave their email consent, send them love! And why not a bit retargeting, they will be cheaper to reconvert that new users anyway.</p>
+
+
+
+<h2>7. BONUS: going further with machine learning</h2>
+
+
+
+<p>I have touched quickly on what excel cannot do. For instance a 3D graph, or a clustering of more than two dimensions. Here they are:</p>
+
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="597" height="422" src="../content/images/wordpress/2021/02/image.png" alt="Machine learning clustering plotted in 3D" class="wp-image-583" srcset="../content/images/wordpress/2021/02/image.png 597w, ../content/images/wordpress/2021/02/image-300x212.png 300w, ../content/images/wordpress/2021/02/image-150x106.png 150w" sizes="(max-width: 597px) 100vw, 597px" /></figure></div>
+
+
+
+<p>This beautiful above example shows what Machine Learning can do for marketing! You can see here the 5 groups of users, splitted by the algorithm and plotted on a 3D graph. Great Data Scientists cover <a href="https://towardsdatascience.com/data-driven-growth-with-python-part-2-customer-segmentation-5c019d150444">this (more technical) project already</a>, in case you feel like coding it through.</p>
+
+
+
+<p>Why is that so much more exciting? Because of the new insights! Look at the red groups of users, who bought recently for little money VS the yellows which are the users to be kept at all costs! Difficult to have a more actionable data-driven customer segmentation, you just have to define 5 ways to approach these groups!</p>
+
+
+
+<hr class="wp-block-separator"/>
+
+
+
+<p>I hope you had as much pleasure doing this exercise as I had to create it and write it down. <br>If you are interested in more articles on the topic of &#8220;Data for Growth&#8221;, don&#8217;t hesitate to register for my <a href="http://arthurmoreau.com" target="_blank" rel="noreferrer noopener">newsletter</a>.<br>If you would like to work with me don&#8217;t hesitate to contact me on <a href="https://www.linkedin.com/in/arthur-moreau-data-driven/">Linkedin</a></p>
+<!--kg-card-end: html-->
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="../tag/customer-segmentation/index.html" title="customer segmentation">customer segmentation</a>
+                      </li>
+                      <li>
+                        <a href="../tag/data-driven/index.html" title="data-driven">data-driven</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="../author/arthur/index.html" class="m-author-picture" aria-label="Arthur Moreau">
+                  <div style="background-image: url(http://www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s&);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="../author/arthur/index.html">Arthur Moreau</a>
+              </h4>
+              <ul class="m-author-links">
+              </ul>
+            </div>
+          </div>
+        </section>
+          <section class="m-recommended">
+            <div class="l-wrapper in-recommended">
+              <h3 class="m-section-title in-recommended">Recommended for you</h3>
+              <div class="m-recommended-articles">
+                <div class="m-recommended-slider glide js-recommended-slider">
+                  <div class="glide__track" data-glide-el="track">
+                    <div class="glide__slides">
+                      
+    <div class="m-recommended-slider__item glide__slide">
+      <div class="m-heading no-margin">
+        <h3>No posts found</h3>
+        <p>
+          Apparently there are no posts at the moment, check again later.
+        </p>
+      </div>
+    </div>
+                    </div>
+                  </div>
+                  <div data-glide-el="controls" class="glide__arrows js-controls">
+                    <button data-glide-dir="<" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
+                      <span class="icon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    <button data-glide-dir=">" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
+                      <span class="icon-arrow-right" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </article>
+</main>
+
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+        <a href="https://www.facebook.com/ghost" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="icon-facebook" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/ghost" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="../rss.2" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Arthur Moreau&#x27;s blog &copy; 2021</span>
+      <span>&nbsp; &bull; &nbsp;</span>
+      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="../assets/html/javascript.html@v=ae11527b2d.html" rel="jslicense">JavaScript license information</a>
+    </p>
+  </div>
+</footer>
+
+
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../assets/js/manifest.js@v=ae11527b2d"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js@v=ae11527b2d"></script>
+    <script defer src="../assets/js/vendor.js@v=ae11527b2d"></script>
+    <script defer src="../assets/js/app.js@v=ae11527b2d"></script>
+
+      <script defer src="../assets/js/post.js@v=ae11527b2d"></script>
+
+
+    <style>
+  /* The footer links to ghost keep coming back */
+  .site-footer a[href^="https://ghost.org"] { display: none; }
+</style>
+  </body>
+</html>

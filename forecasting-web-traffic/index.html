@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Forecasting web traffic with Python and Google Analytics</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="../assets/css/app.css@v=ae11527b2d.css" as="style" />
+    <link rel="preload" href="../assets/js/manifest.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../assets/js/vendor.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../assets/js/app.js@v=ae11527b2d" as="script" />
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css@v=ae11527b2d.css" as="style" />
+  <link rel="preload" href="../assets/js/post.js@v=ae11527b2d" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2@v=ae11527b2d") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2@v=ae11527b2d") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2@v=ae11527b2d") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot@101fc3%253Fv=ae11527b2d");
+        src: url("../assets/fonts/icomoon/icomoon.eot@101fc3") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf@101fc3%253Fv=ae11527b2d") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff@101fc3%253Fv=ae11527b2d") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg@101fc3") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css@v=ae11527b2d.css" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css@v=ae11527b2d.css" media="screen" />
+
+
+    
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Arthur Moreau&#x27;s blog" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Forecasting web traffic with Python and Google Analytics" />
+    <meta property="og:description" content="Showing the future to business managers: A step-by-step to create a time series prediction of your web traffic plotted as a GIF.  A beautiful GIF showing how badly our traffic will crash in winter SolarPanelCompany decided to hire their first Data Scientist: me. I was quite excited by the challenge" />
+    <meta property="og:url" content="http://localhost:2368/forecasting-web-traffic/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2021/05/google-and-python-16x9.jpg" />
+    <meta property="article:published_time" content="2020-10-15T16:06:51.000Z" />
+    <meta property="article:modified_time" content="2021-05-19T15:10:16.000Z" />
+    <meta property="article:tag" content="forecasting" />
+    <meta property="article:tag" content="Google Analytics" />
+    <meta property="article:tag" content="prediction" />
+    <meta property="article:tag" content="Predictive modeling" />
+    <meta property="article:tag" content="time series" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Forecasting web traffic with Python and Google Analytics" />
+    <meta name="twitter:description" content="Showing the future to business managers: A step-by-step to create a time series prediction of your web traffic plotted as a GIF.  A beautiful GIF showing how badly our traffic will crash in winter SolarPanelCompany decided to hire their first Data Scientist: me. I was quite excited by the challenge" />
+    <meta name="twitter:url" content="http://localhost:2368/forecasting-web-traffic/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2021/05/google-and-python-16x9.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Arthur Moreau" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="forecasting, Google Analytics, prediction, Predictive modeling, time series" />
+    <meta name="twitter:site" content="@ghost" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1125" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Arthur Moreau&#x27;s blog",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Arthur Moreau",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "http://localhost:2368/author/arthur/",
+        "sameAs": []
+    },
+    "headline": "Forecasting web traffic with Python and Google Analytics",
+    "url": "http://localhost:2368/forecasting-web-traffic/",
+    "datePublished": "2020-10-15T16:06:51.000Z",
+    "dateModified": "2021-05-19T15:10:16.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2021/05/google-and-python-16x9.jpg",
+        "width": 2000,
+        "height": 1125
+    },
+    "keywords": "forecasting, Google Analytics, prediction, Predictive modeling, time series",
+    "description": "Showing the future to business managers: A step-by-step to create a time series \nprediction of your web traffic plotted as a GIF. \nA beautiful GIF showing how badly our traffic will crash in winter\nSolarPanelCompany decided to hire their first Data Scientist: me. I was quite\nexcited by the challenge of having to build everything from scratch. My goal was\nto get a first quick win to show my value to the team.\n\nIn the first week, a marketing manager came to your desk panicking: “Look!” he\nsays by ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.41" />
+    <link rel="alternate" type="application/rss+xml" title="Arthur Moreau&#x27;s blog" href="../rss.2" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168098396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-168098396-1');
+</script>
+<style>
+    
+.site-main {
+    background: #0D0630;
+} 
+.site-nav-main{
+    background: #0D0630; 
+}
+.page-template .site-main, .post-full-content, .post-template .site-main, .site-main {
+    background: #0D0630;
+}
+.site-header-background {
+    background: #0D0630;
+}
+.site-nav {
+    background: #0D0630;
+}
+    
+.site-header-background:not(.responsive-header-img) .site-nav-left-wrapper:after, .site-nav-main .site-nav-left-wrapper:after {
+    background: linear-gradient(90deg,rgba(9,10,11,0) 0,#0D063000);
+}
+
+.site-nav-main .site-nav-left-wrapper:after {
+    right: 0;
+    background: linear-gradient(to right, color(#0D0630 l(-5%) a(0)) 0%,color(#0D0630 l(-5%)) 0%);
+}
+.site-archive-header .no-image{
+    background: #0D0630;
+    }
+.post-feed {
+    background: #0D0630;
+}
+.read-next {
+    background:     #0D0630;
+}
+.read-next-card {
+    background: #0D0630; 
+}    
+.site-footer{
+    background: #0D0630;
+}
+    
+.subscribe-overlay {      
+     border: 1px solid;
+     background: #0D0630;
+}
+.subscribe-form {
+    border: 1px solid;
+    background: #0D0630;
+}
+.subscribe-email {
+    border: 1px solid;
+    background: #0D0630;
+}
+.subscribe-overlay .subscribe-email {
+    border: 1px solid;  
+}
+.subscribe-form button {
+    height: 46px;      
+}
+.subscribe-form-title {
+   color: rgba(255, 255, 255, 0.75); 
+}
+    
+.post-full-title {
+    color: rgba(255, 255, 255, 0.75);
+}
+    .post-feed  {
+        background: #0D0630;
+    }
+    .post-card-excerpt {
+        color: rgba(255, 255, 255, 0.75);
+    }
+.post-card-title {
+    color: rgba(255, 255, 255, 0.75);
+    }
+
+    .post-full-content {
+    color: rgba(255, 255, 255, 0.75);
+    background: #0D0630;
+    }
+
+    .post-full-custom-excerpt {
+    color: rgba(255, 255, 255, 0.75);
+    }
+    .post-full-content code {
+        color: #fff;
+        background: #0D0630;
+    }
+    
+.post-full-byline-meta h4 a {
+    color: rgba(255, 255, 255, 0.75);
+}
+.post-full-content a {
+    color: rgba(255, 255, 255, 0.75);
+    word-break: break-word;
+    box-shadow: var(--darkgrey) 0 -1px 0 inset;
+    transition: all 0.2s ease-in-out;
+}
+.post-full-content strong,
+.post-full-content em {
+    color: rgba(255, 255, 255, 0.75);
+}
+    
+.post-full-content h1,
+.post-full-content h2,
+.post-full-content h3,
+.post-full-content h4,
+.post-full-content h5,
+.post-full-content h6 {
+    color: rgba(255, 255, 255, 0.75);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+    
+.site-archive-header .no-image {
+    color: rgba(255, 255, 255, 0.75);
+}
+    
+.no-image .author-social-link a {
+    color: rgba(255, 255, 255, 0.75);
+}
+.post-card-byline-content a {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+}
+    
+@media  {
+.page-template .site-main, .post-full-content, .post-template .site-main, .site-main {
+    background: #0D0630;
+    }
+.post-full-custom-excerpt {     
+    color: rgba(255, 255, 255, 0.75);
+    }
+}
+   
+</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://localhost:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="post-template tag-forecasting tag-google-analytics tag-prediction tag-predictive-modeling tag-time-series">
+    
+
+
+
+  
+<header class="m-header with-picture js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../index.html" class="m-site-name in-mobile-topbar">
+        Arthur Moreau&#x27;s blog
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-site-name in-desktop-menu">
+                    Arthur Moreau&#x27;s blog
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="../index.html">Home</a>
+    </li>
+    <li class="nav-author">
+      <a href="../about/index.html">Author</a>
+    </li>
+    <li class="nav-contact">
+      <a href="../contact/index.html">Contact</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="../data-petrol/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/data-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="If data is petrol...">
+                                      If data is petrol...
+                                    </h3>
+                                    <span class="m-recent-article__date">20 hours ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../data-driven-customer-segmentation/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/excel-16x9-1.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="how to make data-driven customer segmentation with Excel">
+                                      how to make data-driven customer segmentation with Excel
+                                    </h3>
+                                    <span class="m-recent-article__date">3 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/google-and-python-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Forecasting web traffic with Python and Google Analytics">
+                                      Forecasting web traffic with Python and Google Analytics
+                                    </h3>
+                                    <span class="m-recent-article__date">7 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../growth-hacking-beyond-bullshit/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/growth-hacking-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Growth Hacking: beyond the bullsh*t">
+                                      Growth Hacking: beyond the bullsh*t
+                                    </h3>
+                                    <span class="m-recent-article__date">a year ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/google-analytics/index.html">Google Analytics</a>
+                            </li>
+                            <li>
+                              <a href="../tag/growth-hacking/index.html">Growth Hacking</a>
+                            </li>
+                            <li>
+                              <a href="../tag/machine-learning/index.html">Machine learning</a>
+                            </li>
+                            <li>
+                              <a href="../tag/marketing/index.html">Marketing</a>
+                            </li>
+                            <li>
+                              <a href="../tag/predictive-modeling/index.html">Predictive modeling</a>
+                            </li>
+                            <li>
+                              <a href="../tag/customer-segmentation/index.html">customer segmentation</a>
+                            </li>
+                            <li>
+                              <a href="../tag/data-driven/index.html">data-driven</a>
+                            </li>
+                            <li>
+                              <a href="../tag/forecasting/index.html">forecasting</a>
+                            </li>
+                            <li>
+                              <a href="../tag/prediction/index.html">prediction</a>
+                            </li>
+                            <li>
+                              <a href="../tag/time-series/index.html">time series</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-aos="fade">
+    <div class="m-hero__picture in-post">
+      <img
+        srcset="../content/images/size/w300/2021/05/google-and-python-16x9.jpgon-16x9.jpg 300w../content/images/size/w600/2021/05/google-and-python-16x9.jpghon-16x9.jpg 600../content/images/size/w1000/2021/05/google-and-python-16x9.jpgthon-16x9.jpg 100../content/images/size/w2000/2021/05/google-and-python-16x9.jpgython-16x9.jpg 2000w
+        "
+        sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+        src="../content/images/size/w1000/2021/05/google-and-python-16x9.jpg"
+        alt=""
+      />
+    </div>
+    </section>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up"
+          data-aos-delay="300">
+          <div
+            class="l-post-content   js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Forecasting web traffic with Python and Google Analytics</h1>
+              <div class="m-heading__meta">
+                  <a href="../tag/forecasting/index.html" class="m-heading__meta__tag">forecasting</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">Oct 15, 2020</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/forecasting-web-traffic/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Forecasting%20web%20traffic%20with%20Python%20and%20Google%20Analytics&url=http://localhost:2368/forecasting-web-traffic/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!--kg-card-begin: html-->
+<h2><em>Showing the future to business managers: A step-by-step to create a <em>time series</em> prediction of your web traffic <em>plotted as a GIF</em>. </em></h2>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" width="1440" height="720" src="../content/images/wordpress/2020/10/animation_video.gif" alt="Prediction time series web traffic" class="wp-image-363"/><figcaption>A beautiful GIF showing how badly our traffic will crash in winter</figcaption></figure>
+
+
+
+<p>SolarPanelCompany decided to hire their first Data Scientist: me. I was quite excited by the challenge of having to build everything from scratch. My goal was to get a first quick win to show my value to the team.</p>
+
+
+
+<p>In the first week, a marketing manager came to your desk panicking: &#8220;Look!&#8221; he says by pointing at the screen of his laptop &#8220;On Google Analytics, I see our traffic went down during the last month! Can your Prediction Data Learning stuff do something to save the business?&#8221;.</p>
+
+
+
+<p>&#8220;Alright,&#8221; I think &#8220;that&#8217;s not the real question here.&#8221; So I rephrase: &#8220;Are you asking me to show whether we have a downwards trend or just a seasonal effect?&#8221;. He stares blankly. &#8220;Are you asking me to verify when we can hope that it will go back upwards? &#8211; Yes! Exactly that! I have a meeting with the Marketing Director tomorrow. I let you work on that!&#8221;</p>
+
+
+
+<p>If this situation happened to you, or if you want to create the visual forecasting of your own web traffic, you are on the right page! Here is the <strong>step-by-step guide</strong> to creating a prediction of the number of visitors to your website based on your Google Analytics data and, as a bonus, make it a likable GIF for the business guys. In short, we&#8217;ll create a time series model with the Prophet package.</p>
+
+
+
+<p>This guide includes 3 steps:</p>
+
+
+
+<ol><li><a href="index.html#connect-google-analytics-api">Calling your Google Analytics API data with Python</a></li><li><a href="index.html#forecast-web-traffic">Building your model with Prophet</a></li><li><a href="index.html#create-gif-vizualization">Creating a GIF of your prediction (because it&#8217;s fun)</a></li></ol>
+
+
+
+<h2>1. Connecting to your Google Analytics API</h2>
+
+
+
+<p><em>Needed for this step: admin right to a Google Analytics account</em>.<em> If you don&#8217;t have any, you can use a <a href="https://support.google.com/analytics/answer/6367342?hl=en" target="_blank" rel="noreferrer noopener">demo Google Analytics account</a> and simply import the data in a csv.</em></p>
+
+
+
+<p>This is not an easy step, but Google created a lot of documentation to help you go through. I will here present the step-by-step guide to fetch the traffic. If you are interested in other metrics (such as goals, pageviews, etc.) you need to have a look in the extensive official <a href="https://developers.google.com/analytics/devguides/config/mgmt/v3" target="_blank" rel="noreferrer noopener">Google&#8217;s Management API documentation</a>.</p>
+
+
+
+<p>Let&#8217;s import our packages:</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+import pandas as pd
+from apiclient.discovery import build
+from oauth2client.service_account import ServiceAccountCredentials
+</pre>
+
+
+<p>The first package is our eternal friend Pandas. The two last packages are from Google and allow you to call the Google Analytics API.</p>
+
+
+
+<p>If you don&#8217;t have access to the Google API yet, you need to activate that on your side. The below video explains all the steps to do so.</p>
+
+
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<div class="video-container"><iframe title="Google Analytics with Python. Initial access guide for beginners." width="900" height="506" src="https://www.youtube.com/embed/Xpx--7g6FKk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div></figure>
+
+
+
+<p>So let&#8217;s start the fun. Our first piece of code is calling the key and the right view. Note that the view number can be found in your Google Analytics account under &#8220;setting&gt;view&#8221;</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+SCOPES = ['https://www.googleapis.com/auth/analytics.readonly']
+KEY_FILE_LOCATION = 'ga-test-api-111111-111111111111.json' #this should be replaced by your key document.
+VIEW_ID = '193585107' #this is my own view ID and should be replaced by yours.
+</pre>
+
+
+<p>In the above part, the first line doesn&#8217;t change, but the 2nd and the 3rd have to be changed with your own access keys.</p>
+
+
+
+<p>Now we will use the code from Google API&#8217;s documentation. If you don&#8217;t understand it all, it doesn&#8217;t matter: copy-pasting it will do the job if you modified properly the paragraph above.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+#Initializing report
+def initialize_analyticsreporting():
+  credentials = ServiceAccountCredentials.from_json_keyfile_name(
+      KEY_FILE_LOCATION, SCOPES)
+  analytics = build('analyticsreporting', 'v4', credentials=credentials)
+  return analytics
+</pre>
+
+<pre class="brush: plain; title: ; notranslate" title="">
+#Get one report page
+def get_report(analytics, pageTokenVar):
+  return analytics.reports().batchGet(
+      body={
+        'reportRequests': [
+        {
+          'viewId': VIEW_ID,
+          'dateRanges': [{'startDate': '600daysAgo', 'endDate': 'yesterday'}],
+          'metrics': [{'expression': 'ga:sessions'}, {'expression': 'ga:Pageviews'}],
+          'dimensions': [{'name': 'ga:Date'}],
+          'pageSize': 10000,
+          'pageToken': pageTokenVar,
+          'samplingLevel': 'LARGE'
+        }]
+      }
+  ).execute()
+</pre>
+
+
+<p>We can see above the mention "metrics". On my side, as I wanted to do a time series I cared only about the traffic dimension but also imported the Pageviews for further analysis.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+def handle_report(analytics,pagetoken,rows):  
+    response = get_report(analytics, pagetoken)
+
+    #Header, Dimensions Headers, Metric Headers 
+    columnHeader = response.get(&quot;reports&quot;)[0].get('columnHeader', {})
+    dimensionHeaders = columnHeader.get('dimensions', [])
+    metricHeaders = columnHeader.get('metricHeader', {}).get('metricHeaderEntries', [])
+
+    #Pagination
+    pagetoken = response.get(&quot;reports&quot;)[0].get('nextPageToken', None)
+    
+    #Rows
+    rowsNew = response.get(&quot;reports&quot;)[0].get('data', {}).get('rows', [])
+    rows = rows + rowsNew
+    print(&quot;len(rows): &quot; + str(len(rows)))
+
+    #Recursivly query next page
+    if pagetoken != None:
+        return handle_report(analytics,pagetoken,rows)
+    else:
+        #nicer results
+        nicerows=[]
+        for row in rows:
+            dic={}
+            dimensions = row.get('dimensions', [])
+            dateRangeValues = row.get('metrics', [])
+
+            for header, dimension in zip(dimensionHeaders, dimensions):
+                dic[header] = dimension
+
+            for i, values in enumerate(dateRangeValues):
+                for metric, value in zip(metricHeaders, values.get('values')):
+                    if ',' in value or ',' in value:
+                        dic[metric.get('name')] = float(value)
+                    else:
+                        dic[metric.get('name')] = int(value)
+            nicerows.append(dic)
+        return nicerows
+</pre>
+
+
+<p>These blocks of code are the standard ones given by Google for people willing to fetch their data. </p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+#Start
+def main():    
+    analytics = initialize_analyticsreporting()
+    
+    global dfanalytics
+    dfanalytics = []
+
+    rows = []
+    rows = handle_report(analytics,'0',rows)
+
+    dfanalytics = pd.DataFrame(list(rows))
+
+
+main()
+
+print(dfanalytics)
+</pre>
+
+
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large is-resized"><img loading="lazy" src="../content/images/wordpress/2020/10/image-1.png" alt="result print(dfanalytics)" class="wp-image-490" width="262" height="203" srcset="../content/images/wordpress/2020/10/image-1.png 265w, ../content/images/wordpress/2020/10/image-1-150x116.png 150w" sizes="(max-width: 262px) 100vw, 262px" /></figure></div>
+
+
+
+<p>Ok right, now you have your data in the DataFrame dfanalytics. Congratulations, you successfully called the Google API.</p>
+
+
+
+<h2 id="forecast-web-traffic">2. Forecasting your web traffic</h2>
+
+
+
+<p>So we have the data. It took already a bit of time but now is the fun part: predicting the web traffic of SolarPanelCompany.</p>
+
+
+
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large"><img loading="lazy" width="542" height="339" src="../content/images/wordpress/2020/10/solar-panel-solar-panels-renewable-solar-power-solar-energy-electric-cell-voltaic-edited-1.jpg" alt="Solar panel as we sell them." class="wp-image-493" srcset="../content/images/wordpress/2020/10/solar-panel-solar-panels-renewable-solar-power-solar-energy-electric-cell-voltaic-edited-1.jpg 542w, ../content/images/wordpress/2020/10/solar-panel-solar-panels-renewable-solar-power-solar-energy-electric-cell-voltaic-edited-1-300x188.jpg 300w, ../content/images/wordpress/2020/10/solar-panel-solar-panels-renewable-solar-power-solar-energy-electric-cell-voltaic-edited-1-150x94.jpg 150w, ../content/images/wordpress/2020/10/solar-panel-solar-panels-renewable-solar-power-solar-energy-electric-cell-voltaic-edited-1-400x250.jpg 400w" sizes="(max-width: 542px) 100vw, 542px" /><figcaption>Solar panels as we sell them.</figcaption></figure></div>
+
+
+
+<p>To start this forecasting of the Google Analytics traffic, we need to start importing our packages. We will use Facebook&#8217;s Prophet here. This great tool is super easy to use as it uses the same syntax as the package scikit. Facebook themselves use them for all their time series forecasts, be it for web traffic or other.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+from fbprophet import Prophet
+from fbprophet.plot import add_changepoints_to_plot
+</pre>
+
+
+<p>We can now start the fun. Let&#8217;s first check how our data is doing. A simple plot does the job.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+dfanalytics.plot()
+</pre>
+
+
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-full"><img loading="lazy" width="965" height="483" src="../content/images/wordpress/2020/10/image-2.png" alt="Plotting the amount of visits per day, time series" class="wp-image-496" srcset="../content/images/wordpress/2020/10/image-2.png 965w, ../content/images/wordpress/2020/10/image-2-300x150.png 300w, ../content/images/wordpress/2020/10/image-2-150x75.png 150w, ../content/images/wordpress/2020/10/image-2-768x384.png 768w" sizes="(max-width: 965px) 100vw, 965px" /><figcaption>Plotting the amount of visits per day</figcaption></figure></div>
+
+
+
+<p>We can already see a strong seasonality in the data. Indeed, this is the data about solar panels. The seasonality is thus expected: it grows smoothly from February to July, as the sun get more and more intense. Then, in August people know it&#8217;s too late to enjoy the sun.</p>
+
+
+
+<p>Back to our code, let&#8217;s check what the prophet has to say. Facebook&#8217;s prophet requires you to change the name your two columns:</p>
+
+
+
+<ul><li>the <strong> value</strong> column needs to be called <strong>&#8216;y&#8217;</strong></li><li>the <strong>timestamp</strong> needs to be <strong>&#8216;ds&#8217;</strong> and be a DateTime variable.</li></ul>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+df = dfanalytics
+</pre>
+
+<pre class="brush: plain; title: ; notranslate" title="">
+df['ds'] = pd.to_datetime(df['ga:Date'])
+df.rename(columns={'ga:sessions': 'y'}, inplace= True)
+df.drop(['ga:Date', 'ga:Pageviews'], axis=1, inplace=True)
+</pre>
+
+
+<figure class="wp-block-image size-large is-style-default"><img loading="lazy" width="119" height="91" src="../content/images/wordpress/2020/10/image-3.png" alt="results df.head()" class="wp-image-497"/></figure>
+
+
+
+<h3>2.1 Missing data</h3>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="965" height="483" src="../content/images/wordpress/2020/11/image-2.png" alt="Plotting missing data time series." class="wp-image-531" srcset="../content/images/wordpress/2020/11/image-2.png 965w, ../content/images/wordpress/2020/11/image-2-300x150.png 300w, ../content/images/wordpress/2020/11/image-2-150x75.png 150w, ../content/images/wordpress/2020/11/image-2-768x384.png 768w" sizes="(max-width: 965px) 100vw, 965px" /><figcaption>A plotting of the data. We see in red the missing data points.</figcaption></figure>
+
+
+
+<p>Although Facebook claims that Prophet is well resistant against missing data and outliers, it&#8217;s never bad to get rid of them. Especially in our case: let&#8217;s say that the tracking of the website crashed for one day or two, you don&#8217;t want this to influence.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+missing_dates = pd.date_range(start = '2019-04-16', end = '2020-12-29' ).difference(df['ds'])
+print(missing_dates)
+</pre>
+
+
+<p>If you have some missing data, as I had, you will input them in a new DataFrame. You also need to assign a value to it. I personally used the 7 days moving average.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+df_missing_dates = pd.DataFrame(missing_dates)
+df_missing_dates.columns = ['ds']
+list_replace_values = [20, 15, 21] #here is our moving average
+df_missing_dates['y'] = list_replace_values
+</pre>
+
+
+<p>Then we concat the frameworks together and put a cap and a floor. The floor is &#8220;0&#8221; as you know you won&#8217;t have negative traffic. On the other hand,  the cap is purely &#8220;human-in-the-loop&#8221; work, so based on your good judgment. This cap and floor will help create the boundaries of the model.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+df = pd.concat([df2, df_missing_dates])
+df['cap'] = 120
+df['floor'] = 0
+df.sort_values('ds', inplace=True)
+</pre>
+
+
+<h3>2.2 EDA</h3>
+
+
+
+<p>That will be quick as we don&#8217;t have so many features; only the value of the observation itself.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+df['y'].plot()
+</pre>
+
+
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-full is-resized"><img loading="lazy" src="../content/images/wordpress/2020/10/Untitled.png" alt="Plotting visit per day with missing data replaced" class="wp-image-498" width="638" height="286" srcset="../content/images/wordpress/2020/10/Untitled.png 1070w, ../content/images/wordpress/2020/10/Untitled-300x135.png 300w, ../content/images/wordpress/2020/10/Untitled-1024x460.png 1024w, ../content/images/wordpress/2020/10/Untitled-150x67.png 150w, ../content/images/wordpress/2020/10/Untitled-768x345.png 768w" sizes="(max-width: 638px) 100vw, 638px" /><figcaption>After: The missing data of the August&#8217;s website crash have been replaced.</figcaption></figure></div>
+
+
+
+<p>We see that there are no more outliers than the missing data, we can keep on.</p>
+
+
+
+<h3>2.3 Forecasting our web traffic: the training</h3>
+
+
+
+<p>Training the model with Prophet is really easy. The team copied the mechanism used is scikit packages: .fit() and .predict()</p>
+
+
+
+<h4>2.3.1 Creating a model</h4>
+
+
+
+<p>So first we create the model. There are numerous variations that can be added. I will explain my choices below.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+model = Prophet(changepoint_prior_scale=0.5, changepoint_range=0.9, seasonality_mode='multiplicative', yearly_seasonality = 10)
+model.fit(df)
+</pre>
+
+
+<ul><li>Changepoint_prior_scale: to cope with the underfitting. Increasing makes the trends more flexible (so visually broadening the end funnel)</li><li>Changepoint_range: By default, Prophet changes the slope of the trend only of the first 80% of the data. I here set 0.9 for it to include 90% of the data.</li><li>seasonality_mode=&#8217;multiplicative&#8217; as parameters, because the seasonality grows in influence. We clearly see that our business is growing following a multiplicative trend and not a linear one.</li><li>yearly.seasonality = 20. It was 10 but I want more. This number represents <a href="https://en.wikipedia.org/wiki/Fourier_transform" target="_blank" rel="noreferrer noopener">Fourier&#8217;s Order</a>. </li></ul>
+
+
+
+<p>If you want to adapt your model under different criteria, I recommend having a look in the <a href="https://facebook.github.io/prophet/" target="_blank" rel="noreferrer noopener">Facebook&#8217;s Prophet Github.</a></p>
+
+
+
+<h4>2.3.2 Building the forecast timestamp set.</h4>
+
+
+
+<p>Until now, we have trained our model on our previous data. In order to forecast future web traffic, we first need to create future timestamps. Here I will create 60 days, so two months in the future.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+#Forecasting
+future = model.make_future_dataframe(periods= 60)
+future['cap'] = 120
+future['floor'] = 0
+print(future.tail())
+</pre>
+
+
+<h4>2.3.3 Predicting the future</h4>
+
+
+
+<p>Here we go. In the next two lines, we will finally forecast our website traffic from Google Analytics.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+forecast = model.predict(future)
+forecast.tail()
+</pre>
+
+<pre class="brush: plain; title: ; notranslate" title="">
+model.plot(forecast)
+</pre>
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" width="712" height="424" src="../content/images/wordpress/2020/10/download.png" alt="The black dots are the datapoint, and the blue line is the prediction" class="wp-image-460" srcset="../content/images/wordpress/2020/10/download.png 712w, ../content/images/wordpress/2020/10/download-300x179.png 300w, ../content/images/wordpress/2020/10/download-150x89.png 150w" sizes="(max-width: 712px) 100vw, 712px" /><figcaption>The black dots are the data points, and the blue line is the prediction</figcaption></figure>
+
+
+
+<p>And Voilà! We can see the beauty of my traffic jumping off the cliff in November and December.</p>
+
+
+
+<h4>2.3.4 Analyzing components</h4>
+
+
+
+<p>Prophet has another great function:  it can show the different components in a graph. </p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+model.plot_components(forecast)
+</pre>
+
+
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="640" height="640" src="../content/images/wordpress/2020/10/download-1-1.png" alt="Component of the time series model from Prophet" class="wp-image-462" srcset="../content/images/wordpress/2020/10/download-1-1.png 640w, ../content/images/wordpress/2020/10/download-1-1-300x300.png 300w, ../content/images/wordpress/2020/10/download-1-1-150x150.png 150w" sizes="(max-width: 640px) 100vw, 640px" /><figcaption>Component of the time series model</figcaption></figure></div>
+
+
+
+<p>There are already some interesting conclusions:</p>
+
+
+
+<ul><li>The overall trend shows a decline. This is to be taken with a grain of salt, knowing that my growth is multiplicative, and thus the Fall 2020 push the trends downwards heavily.</li><li>The weekly trend: Thursday to Saturday is the worst moment. Sunday is a great moment if I want to advertise.</li><li>Yearly: that is very insightful. We can see the peak on the first of August. Also, we can see that Christmas searches do not bring much revenue. So the fruitful period is April to the end of October.</li></ul>
+
+
+
+<p>That&#8217;s already some great insights that I can give back to the marketing manager. Not only I can advise on the day where they should spend more ads budget, but I can also ensure that yes: it&#8217;s normal to see a down in our traffic. And it will recover only in February.</p>
+
+
+
+<p>Also interesting is to see the overall trends compare to the data. We can see here when the trend changes.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+fig = model.plot(forecast)
+a = add_changepoints_to_plot(fig.gca(), model, forecast)
+</pre>
+
+
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large"><img loading="lazy" width="577" height="353" src="../content/images/wordpress/2020/10/image-4.png" alt="The trends and its variation of slope" class="wp-image-500" srcset="../content/images/wordpress/2020/10/image-4.png 577w, ../content/images/wordpress/2020/10/image-4-300x184.png 300w, ../content/images/wordpress/2020/10/image-4-150x92.png 150w" sizes="(max-width: 577px) 100vw, 577px" /><figcaption>The trends and its variation of slope</figcaption></figure></div>
+
+
+
+<h3>2.4 Testing the model</h3>
+
+
+
+<p>Great, now we have done most of the work to predict our Google Analytics traffic. But as rigorous Data Scientists, we also want to test the model.</p>
+
+
+
+<p>The testing for time series is slightly different than for traditional models. We need to work with a rolling window: rolling windows means using 60 days of data and assessing how well it predicted against the next 30 days of data.</p>
+
+
+
+<figure class="wp-block-image size-full is-style-default"><img loading="lazy" width="677" height="402" src="../content/images/wordpress/2020/11/Rolling-window-time-series.png" alt="Rolling windows in times series prediction." class="wp-image-519" srcset="../content/images/wordpress/2020/11/Rolling-window-time-series.png 677w, ../content/images/wordpress/2020/11/Rolling-window-time-series-300x178.png 300w, ../content/images/wordpress/2020/11/Rolling-window-time-series-150x89.png 150w" sizes="(max-width: 677px) 100vw, 677px" /><figcaption>Exemple of Rolling window: <br>The red part is the data used to cross-validate the green part. The yellow part is the forecast. </figcaption></figure>
+
+
+
+<p>In this graph above for instance, the red part is used to predict the green part. After cross-validation, the red part will move forward in time to take the next 60 days and again, predicts the next 30 days. This is the concept of the rolling windows. Coding-wise, it&#8217;s written as follow:</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+from fbprophet.diagnostics import cross_validation
+df_cv = cross_validation(model, horizon = '30 days', parallel=&quot;processes&quot;)
+df_cv.head()
+</pre>
+
+
+<figure class="wp-block-image size-large is-style-default"><img loading="lazy" width="415" height="140" src="../content/images/wordpress/2020/10/image-6.png" alt="" class="wp-image-503" srcset="../content/images/wordpress/2020/10/image-6.png 415w, ../content/images/wordpress/2020/10/image-6-300x101.png 300w, ../content/images/wordpress/2020/10/image-6-150x51.png 150w" sizes="(max-width: 415px) 100vw, 415px" /></figure>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+# Performance metrics
+from fbprophet.diagnostics import performance_metrics
+df_p = performance_metrics(df_cv)
+df_p.head(20)
+</pre>
+
+<pre class="brush: plain; title: ; notranslate" title="">
+# Visualizing the performance metrics
+from fbprophet.plot import plot_cross_validation_metric
+fig = plot_cross_validation_metric(df_cv, metric='rmse')
+</pre>
+
+
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large"><img loading="lazy" width="512" height="306" src="../content/images/wordpress/2020/10/image-7.png" alt="The RMSE plotted in a graph, 30 days horizon" class="wp-image-504" srcset="../content/images/wordpress/2020/10/image-7.png 512w, ../content/images/wordpress/2020/10/image-7-300x179.png 300w, ../content/images/wordpress/2020/10/image-7-150x90.png 150w" sizes="(max-width: 512px) 100vw, 512px" /><figcaption>The RMSE plotted in a graph, 30 days horizon</figcaption></figure></div>
+
+
+
+<p>And here we are. We now have the RMSE plotted against the horizon in day. As we can see, the further the horizons, the bigger the error. </p>
+
+
+
+<p>Now for the sake of your own work, you can play with the hyperparameters of the model to try to push this down. As we are using this graph for marketing purposes and not for engineering ones, such an RMSE is good enough.</p>
+
+
+
+<h2 id="create-gif-vizualization">3. Visualization</h2>
+
+
+
+<p>So in the first part, I fetched my data and in the second part, I created the model. Now, it&#8217;s time to make it nice so that the Marketing Manager and the CMO are excited about it. Human-truth: having something pleasant to look at makes it more valuable, so time to make my work valuable.</p>
+
+
+
+<p>For pure attention purposes, I had the fun to create a giphy. This kind of animation can really hook on the attention, and thus the interest from the stakeholders to my project.</p>
+
+
+
+<h3>3.1 Data plotting</h3>
+
+
+
+<p>Let&#8217;s start by importing the packages:</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.animation as animation
+from matplotlib import style
+from datetime import datetime
+from matplotlib.animation import FuncAnimation, PillowWriter
+%matplotlib inline
+</pre>
+
+
+<p>We want it catchy, so we will directly start with a stylish element: the dark background.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+with plt.style.context('dark_background'):
+    fig = plt.figure(figsize=(10,10))
+    plt.subplot(1,1,1)
+    plt.plot(forecast['ds'], forecast['yhat'], linewidth=0,marker=&quot;o&quot;)
+</pre>
+
+
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large"><img loading="lazy" width="495" height="470" src="../content/images/wordpress/2020/10/image-8.png" alt="Glowy green on dark background: time series data points" class="wp-image-505" srcset="../content/images/wordpress/2020/10/image-8.png 495w, ../content/images/wordpress/2020/10/image-8-300x285.png 300w, ../content/images/wordpress/2020/10/image-8-150x142.png 150w" sizes="(max-width: 495px) 100vw, 495px" /><figcaption>Glowy green on dark background: time series data points</figcaption></figure></div>
+
+
+
+<p>Very nice effect. Let&#8217;s now plot our prediction</p>
+
+
+
+<h3>3.2 Plotting the prediction make it gif</h3>
+
+
+
+<p>We first need to create one dataframe containing both our data and our prediction.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+df3 = forecast.merge(df2, on='ds', how = 'left')
+</pre>
+
+<pre class="brush: plain; title: ; notranslate" title="">
+df3.tail()
+</pre>
+
+
+<p>Ok that was the easy part, now we will have the big block to create our GIF. To pursue here, be sure to have installed PillowWriter or Imagemagick, these are the ones which will transform your image in GIF.</p>
+
+
+
+<p>The difference between a classic <em>fig, ax</em> matplotlib operation is that we will need to create a function to animate the diagram.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+with plt.style.context('dark_background'):
+    fig = plt.figure(figsize=(20,10))
+    #creating a subplot 
+    ax1 = fig.add_subplot(1,1,1)
+
+
+#creating the animation function.
+    def animate(i):
+
+        lines =  df3.iloc[0:int(i+500)] #   set the variable data to contain 0 to the (i+1)th row. I wanted only the last data and the predictions to be animated, so put i+500.
+ 
+        xs = []                        
+        ys = []
+        zs = []
+        for line in lines:
+            if len(line)&gt;1:
+                xs = lines['ds']
+                ys = lines['yhat']
+ #the predictions
+                zs = lines['y']
+    #the normal data point
+
+# Creating the ax labels, title, legend and plotting value
+        ax1.clear()
+        ax1.set(title='Predicting the future traffic of my website',xlabel= &quot;Time&quot;, ylabel='Traffic')
+        ax1.axis(xmin= (df3['ds'].min()), xmax=(df3['ds'].max())) 
+        ax1.axis(ymin= (df3['y'].min()-1), ymax=(df3['y'].max()+5)) #adding a bit of margin with -1 and +5
+
+        ax1.plot(xs, ys, label='prediction', color='#0693e3')
+        ax1.plot(xs, zs, marker = '.' ,linewidth = 0.0, label='data', color='#afdedc') #linewidth is not visible at 0.1, I change to 0.3
+        ax1.legend(loc='upper left', frameon=True, framealpha = 0.5 )
+        
+
+</pre>
+
+
+<figure class="wp-block-image size-full is-style-default"><img loading="lazy" width="1440" height="720" src="../content/images/wordpress/2020/10/animation_video.gif" alt="Prediction time series web traffic. Our great GIF to be sent to the business managers" class="wp-image-363"/><figcaption><strong>Our great GIF to be sent to the business managers</strong></figcaption></figure>
+
+
+
+<p>The operation ax.clear() is super important. If you fail to put it, like I did, the animation will create a new graph on top of the previous one. Not terrible, except if.. each new graph has a new color. The final animation will be a rapidly blinking graph changing color every quarter of a second. Enough to kill epileptic people.</p>
+
+
+
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large"><img loading="lazy" width="720" height="720" src="../content/images/wordpress/2020/10/animation_video-11.gif" alt="One of my most beautiful failure: I miss 9/10 of the data AND I created an &quot;party&quot; graph making people visually sick. It's almost art. " class="wp-image-507"/><figcaption>An artsy failure: I miss 90% of the data AND I created an &#8220;party&#8221; graph making people visually sick.</figcaption></figure></div>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+writergif = animation.PillowWriter(fps=30) 
+
+#here is the animation. 
+ani = animation.FuncAnimation(fig, animate, frames = (len(forecast)-len(df2)+30), interval=10)
+plt.show()
+
+#and export
+writergif = animation.PillowWriter(fps=30, metadata=dict(artist='Arthur_Moreau')) 
+ani.save('animation_video.gif', writer=writergif)
+</pre>
+
+
+<p>Note that if you are working in a notebook, you won&#8217;t see the animation in your graph. You have to download the &#8216;animation_video.gif&#8217; created to actually see the animation. </p>
+
+
+
+<p>Here you are, proud of your long working hours and ready to rock the stage with your stunning animation. You can now tell how will the future of your business looks like!</p>
+
+
+
+<h2>Conclusion</h2>
+
+
+
+<p>After fetching the data from Google Analytics API, I could plot a time series of our future web traffic in a GIF. </p>
+
+
+
+<p>These visually appealing results helped the marketing manager and the CMO understand that yes, it was normal if the traffic would go down in winter. And yes, it would grow back in Spring, when the sun comes back and people think about solar energy investment.</p>
+
+
+
+<p>Guess which company is starting to invest more in their data team.</p>
+
+
+
+<h2>Going futher</h2>
+
+
+
+<p>Your business manager doesn&#8217;t understand how a prediction works and how you work? You might be interested by <a href="https://arthurmoreau.com/2020/05/22/explain-predictive-modeling/">How to explain predictive modelling to managers</a></p>
+
+
+
+<h2>Appendix</h2>
+
+
+
+<ul><li><a href="https://github.com/ArthurMro/Prediction_marketing/blob/master/Prophet_GA_cs_info.ipynb" target="_blank" rel="noreferrer noopener">Github&#8217;s code</a></li></ul>
+<!--kg-card-end: html-->
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="../tag/forecasting/index.html" title="forecasting">forecasting</a>
+                      </li>
+                      <li>
+                        <a href="../tag/google-analytics/index.html" title="Google Analytics">Google Analytics</a>
+                      </li>
+                      <li>
+                        <a href="../tag/prediction/index.html" title="prediction">prediction</a>
+                      </li>
+                      <li>
+                        <a href="../tag/predictive-modeling/index.html" title="Predictive modeling">Predictive modeling</a>
+                      </li>
+                      <li>
+                        <a href="../tag/time-series/index.html" title="time series">time series</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="../author/arthur/index.html" class="m-author-picture" aria-label="Arthur Moreau">
+                  <div style="background-image: url(http://www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s&);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="../author/arthur/index.html">Arthur Moreau</a>
+              </h4>
+              <ul class="m-author-links">
+              </ul>
+            </div>
+          </div>
+        </section>
+          <section class="m-recommended">
+            <div class="l-wrapper in-recommended">
+              <h3 class="m-section-title in-recommended">Recommended for you</h3>
+              <div class="m-recommended-articles">
+                <div class="m-recommended-slider glide js-recommended-slider">
+                  <div class="glide__track" data-glide-el="track">
+                    <div class="glide__slides">
+                      
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-machine-learning tag-predictive-modeling">
+    <div class="m-article-card__picture">
+      <a href="../explain-predictive-modeling/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/05/axis-16x9.jpg" loading="lazy" alt="">
+      <a href="../author/arthur/index.html" class="m-article-card__author js-tooltip" aria-label="Arthur Moreau" data-tippy-content="Posted by Arthur Moreau ">
+          <div style="background-image: url(http://www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s&);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/machine-learning/index.html" class="m-article-card__tag">Machine learning</a>
+      <a href="../explain-predictive-modeling/index.html" class="m-article-card__info-link" aria-label="How to explain predictive modeling to business managers.">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="How to explain predictive modeling to business managers.">
+            How to explain predictive modeling to business managers.
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>a year ago</span>
+          <span>&bull;</span>
+          <span>6 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+                    </div>
+                  </div>
+                  <div data-glide-el="controls" class="glide__arrows js-controls">
+                    <button data-glide-dir="<" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
+                      <span class="icon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    <button data-glide-dir=">" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
+                      <span class="icon-arrow-right" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </article>
+</main>
+
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+        <a href="https://www.facebook.com/ghost" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="icon-facebook" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/ghost" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="../rss.2" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Arthur Moreau&#x27;s blog &copy; 2021</span>
+      <span>&nbsp; &bull; &nbsp;</span>
+      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="../assets/html/javascript.html@v=ae11527b2d.html" rel="jslicense">JavaScript license information</a>
+    </p>
+  </div>
+</footer>
+
+
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../assets/js/manifest.js@v=ae11527b2d"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js@v=ae11527b2d"></script>
+    <script defer src="../assets/js/vendor.js@v=ae11527b2d"></script>
+    <script defer src="../assets/js/app.js@v=ae11527b2d"></script>
+
+      <script defer src="../assets/js/post.js@v=ae11527b2d"></script>
+
+
+    <style>
+  /* The footer links to ghost keep coming back */
+  .site-footer a[href^="https://ghost.org"] { display: none; }
+</style>
+  </body>
+</html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Predictive modeling - Arthur Moreau&#x27;s blog</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="../../assets/css/app.css@v=ae11527b2d.css" as="style" />
+    <link rel="preload" href="../../assets/js/manifest.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../../assets/js/vendor/content-api.min.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../../assets/js/vendor.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../../assets/js/app.js@v=ae11527b2d" as="script" />
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../../assets/css/listing.css@v=ae11527b2d.css" as="style" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("../../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2@v=ae11527b2d") format('woff2'),
+            url("../../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("../../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2@v=ae11527b2d") format('woff2'),
+            url("../../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("../../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2@v=ae11527b2d") format('woff2'),
+            url("../../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../../assets/fonts/icomoon/icomoon.eot@101fc3%253Fv=ae11527b2d");
+        src: url("../../assets/fonts/icomoon/icomoon.eot@101fc3") format('embedded-opentype'),
+        url("../../assets/fonts/icomoon/icomoon.ttf@101fc3%253Fv=ae11527b2d") format('truetype'),
+        url("../../assets/fonts/icomoon/icomoon.woff@101fc3%253Fv=ae11527b2d") format('woff'),
+        url("../../assets/fonts/icomoon/icomoon.svg@101fc3") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/app.css@v=ae11527b2d.css" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="../../assets/css/listing.css@v=ae11527b2d.css" media="screen" />
+
+
+    
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="Arthur Moreau&#x27;s blog" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Predictive modeling - Arthur Moreau&#x27;s blog" />
+    <meta property="og:description" content="Machine Learning meets marketing; a simplified explanation of what AI can do for marketing." />
+    <meta property="og:url" content="http://localhost:2368/tag/predictive-modeling/" />
+    <meta property="og:image" content="https://static.ghost.org/v3.0.0/images/publication-cover.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/ghost" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Predictive modeling - Arthur Moreau&#x27;s blog" />
+    <meta name="twitter:description" content="Machine Learning meets marketing; a simplified explanation of what AI can do for marketing." />
+    <meta name="twitter:url" content="http://localhost:2368/tag/predictive-modeling/" />
+    <meta name="twitter:image" content="https://static.ghost.org/v3.0.0/images/publication-cover.png" />
+    <meta name="twitter:site" content="@ghost" />
+    <meta property="og:image:width" content="2709" />
+    <meta property="og:image:height" content="938" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Series",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Arthur Moreau&#x27;s blog",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "url": "http://localhost:2368/tag/predictive-modeling/",
+    "name": "Predictive modeling",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.41" />
+    <link rel="alternate" type="application/rss+xml" title="Arthur Moreau&#x27;s blog" href="../../rss.2" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168098396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-168098396-1');
+</script>
+<style>
+    
+.site-main {
+    background: #0D0630;
+} 
+.site-nav-main{
+    background: #0D0630; 
+}
+.page-template .site-main, .post-full-content, .post-template .site-main, .site-main {
+    background: #0D0630;
+}
+.site-header-background {
+    background: #0D0630;
+}
+.site-nav {
+    background: #0D0630;
+}
+    
+.site-header-background:not(.responsive-header-img) .site-nav-left-wrapper:after, .site-nav-main .site-nav-left-wrapper:after {
+    background: linear-gradient(90deg,rgba(9,10,11,0) 0,#0D063000);
+}
+
+.site-nav-main .site-nav-left-wrapper:after {
+    right: 0;
+    background: linear-gradient(to right, color(#0D0630 l(-5%) a(0)) 0%,color(#0D0630 l(-5%)) 0%);
+}
+.site-archive-header .no-image{
+    background: #0D0630;
+    }
+.post-feed {
+    background: #0D0630;
+}
+.read-next {
+    background:     #0D0630;
+}
+.read-next-card {
+    background: #0D0630; 
+}    
+.site-footer{
+    background: #0D0630;
+}
+    
+.subscribe-overlay {      
+     border: 1px solid;
+     background: #0D0630;
+}
+.subscribe-form {
+    border: 1px solid;
+    background: #0D0630;
+}
+.subscribe-email {
+    border: 1px solid;
+    background: #0D0630;
+}
+.subscribe-overlay .subscribe-email {
+    border: 1px solid;  
+}
+.subscribe-form button {
+    height: 46px;      
+}
+.subscribe-form-title {
+   color: rgba(255, 255, 255, 0.75); 
+}
+    
+.post-full-title {
+    color: rgba(255, 255, 255, 0.75);
+}
+    .post-feed  {
+        background: #0D0630;
+    }
+    .post-card-excerpt {
+        color: rgba(255, 255, 255, 0.75);
+    }
+.post-card-title {
+    color: rgba(255, 255, 255, 0.75);
+    }
+
+    .post-full-content {
+    color: rgba(255, 255, 255, 0.75);
+    background: #0D0630;
+    }
+
+    .post-full-custom-excerpt {
+    color: rgba(255, 255, 255, 0.75);
+    }
+    .post-full-content code {
+        color: #fff;
+        background: #0D0630;
+    }
+    
+.post-full-byline-meta h4 a {
+    color: rgba(255, 255, 255, 0.75);
+}
+.post-full-content a {
+    color: rgba(255, 255, 255, 0.75);
+    word-break: break-word;
+    box-shadow: var(--darkgrey) 0 -1px 0 inset;
+    transition: all 0.2s ease-in-out;
+}
+.post-full-content strong,
+.post-full-content em {
+    color: rgba(255, 255, 255, 0.75);
+}
+    
+.post-full-content h1,
+.post-full-content h2,
+.post-full-content h3,
+.post-full-content h4,
+.post-full-content h5,
+.post-full-content h6 {
+    color: rgba(255, 255, 255, 0.75);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+    
+.site-archive-header .no-image {
+    color: rgba(255, 255, 255, 0.75);
+}
+    
+.no-image .author-social-link a {
+    color: rgba(255, 255, 255, 0.75);
+}
+.post-card-byline-content a {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+}
+    
+@media  {
+.page-template .site-main, .post-full-content, .post-template .site-main, .site-main {
+    background: #0D0630;
+    }
+.post-full-custom-excerpt {     
+    color: rgba(255, 255, 255, 0.75);
+    }
+}
+   
+</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://localhost:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="tag-template tag-predictive-modeling">
+    
+
+
+
+  
+<header class="m-header  js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../../index.html" class="m-site-name in-mobile-topbar">
+        Arthur Moreau&#x27;s blog
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../../index.html" class="m-site-name in-desktop-menu">
+                    Arthur Moreau&#x27;s blog
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="../../index.html">Home</a>
+    </li>
+    <li class="nav-author">
+      <a href="../../about/index.html">Author</a>
+    </li>
+    <li class="nav-contact">
+      <a href="../../contact/index.html">Contact</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="../../data-petrol/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../../content/images/size/w300/2021/05/data-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="If data is petrol...">
+                                      If data is petrol...
+                                    </h3>
+                                    <span class="m-recent-article__date">20 hours ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../../data-driven-customer-segmentation/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../../content/images/size/w300/2021/05/excel-16x9-1.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="how to make data-driven customer segmentation with Excel">
+                                      how to make data-driven customer segmentation with Excel
+                                    </h3>
+                                    <span class="m-recent-article__date">3 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../../forecasting-web-traffic/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../../content/images/size/w300/2021/05/google-and-python-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Forecasting web traffic with Python and Google Analytics">
+                                      Forecasting web traffic with Python and Google Analytics
+                                    </h3>
+                                    <span class="m-recent-article__date">7 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../../growth-hacking-beyond-bullshit/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../../content/images/size/w300/2021/05/growth-hacking-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Growth Hacking: beyond the bullsh*t">
+                                      Growth Hacking: beyond the bullsh*t
+                                    </h3>
+                                    <span class="m-recent-article__date">a year ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../google-analytics/index.html">Google Analytics</a>
+                            </li>
+                            <li>
+                              <a href="../growth-hacking/index.html">Growth Hacking</a>
+                            </li>
+                            <li>
+                              <a href="../machine-learning/index.html">Machine learning</a>
+                            </li>
+                            <li>
+                              <a href="../marketing/index.html">Marketing</a>
+                            </li>
+                            <li>
+                              <a href="index.html">Predictive modeling</a>
+                            </li>
+                            <li>
+                              <a href="../customer-segmentation/index.html">customer segmentation</a>
+                            </li>
+                            <li>
+                              <a href="../data-driven/index.html">data-driven</a>
+                            </li>
+                            <li>
+                              <a href="../forecasting/index.html">forecasting</a>
+                            </li>
+                            <li>
+                              <a href="../prediction/index.html">prediction</a>
+                            </li>
+                            <li>
+                              <a href="../time-series/index.html">time series</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero no-picture " data-aos="fade">
+    <div class="m-hero__content" data-aos="fade-down">
+      <h1 class="m-hero-title bigger">Predictive modeling</h1>
+      <div class="m-hero__meta">
+        <ul class="m-hero-stats">
+          <li>
+            2 posts with this tag
+          </li>
+        </ul>
+      </div>
+    </div>
+    </section>
+  
+  <div class="l-content">
+    <div class="l-wrapper" data-aos="fade-up" data-aos-delay="300">
+      <div class="l-grid centered">
+        
+  <article class="m-article-card  post tag-forecasting tag-google-analytics tag-prediction tag-predictive-modeling tag-time-series">
+    <div class="m-article-card__picture">
+      <a href="../../forecasting-web-traffic/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../../content/images/size/w600/2021/05/google-and-python-16x9.jpg" loading="lazy" alt="">
+      <a href="../../author/arthur/index.html" class="m-article-card__author js-tooltip" aria-label="Arthur Moreau" data-tippy-content="Posted by Arthur Moreau ">
+          <div style="background-image: url(http://www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s&);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../forecasting/index.html" class="m-article-card__tag">forecasting</a>
+      <a href="../../forecasting-web-traffic/index.html" class="m-article-card__info-link" aria-label="Forecasting web traffic with Python and Google Analytics">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Forecasting web traffic with Python and Google Analytics">
+            Forecasting web traffic with Python and Google Analytics
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>7 months ago</span>
+          <span>&bull;</span>
+          <span>13 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+  <article class="m-article-card  post tag-machine-learning tag-predictive-modeling">
+    <div class="m-article-card__picture">
+      <a href="../../explain-predictive-modeling/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../../content/images/size/w600/2021/05/axis-16x9.jpg" loading="lazy" alt="">
+      <a href="../../author/arthur/index.html" class="m-article-card__author js-tooltip" aria-label="Arthur Moreau" data-tippy-content="Posted by Arthur Moreau ">
+          <div style="background-image: url(http://www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s&);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../machine-learning/index.html" class="m-article-card__tag">Machine learning</a>
+      <a href="../../explain-predictive-modeling/index.html" class="m-article-card__info-link" aria-label="How to explain predictive modeling to business managers.">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="How to explain predictive modeling to business managers.">
+            How to explain predictive modeling to business managers.
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>a year ago</span>
+          <span>&bull;</span>
+          <span>6 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+      </div>
+    </div>
+    
+<div class="l-wrapper">
+  <nav class="m-pagination" aria-label="Pagination">
+    <span class="m-pagination__text">Page 1 of 1</span>
+  </nav>
+</div>
+
+  </div>
+</main>
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+        <a href="https://www.facebook.com/ghost" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="icon-facebook" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/ghost" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="../../rss.2" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Arthur Moreau&#x27;s blog &copy; 2021</span>
+      <span>&nbsp; &bull; &nbsp;</span>
+      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="../../assets/html/javascript.html@v=ae11527b2d.html" rel="jslicense">JavaScript license information</a>
+    </p>
+  </div>
+</footer>
+
+
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../../assets/js/manifest.js@v=ae11527b2d"></script>
+    <script defer src="../../assets/js/vendor/content-api.min.js@v=ae11527b2d"></script>
+    <script defer src="../../assets/js/vendor.js@v=ae11527b2d"></script>
+    <script defer src="../../assets/js/app.js@v=ae11527b2d"></script>
+
+    
+
+    <style>
+  /* The footer links to ghost keep coming back */
+  .site-footer a[href^="https://ghost.org"] { display: none; }
+</style>
+  </body>
+</html>

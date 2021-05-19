@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>How to explain predictive modeling to business managers.</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="../assets/css/app.css@v=ae11527b2d.css" as="style" />
+    <link rel="preload" href="../assets/js/manifest.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../assets/js/vendor.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../assets/js/app.js@v=ae11527b2d" as="script" />
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css@v=ae11527b2d.css" as="style" />
+  <link rel="preload" href="../assets/js/post.js@v=ae11527b2d" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2@v=ae11527b2d") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2@v=ae11527b2d") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2@v=ae11527b2d") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot@101fc3%253Fv=ae11527b2d");
+        src: url("../assets/fonts/icomoon/icomoon.eot@101fc3") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf@101fc3%253Fv=ae11527b2d") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff@101fc3%253Fv=ae11527b2d") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg@101fc3") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css@v=ae11527b2d.css" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css@v=ae11527b2d.css" media="screen" />
+
+
+    
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Arthur Moreau&#x27;s blog" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to explain predictive modeling to business managers." />
+    <meta property="og:description" content="The simplest explanation about what is predictive modelling, explained at people without tech background." />
+    <meta property="og:url" content="http://localhost:2368/explain-predictive-modeling/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2021/05/axis-16x9.jpg" />
+    <meta property="article:published_time" content="2020-05-22T13:23:21.000Z" />
+    <meta property="article:modified_time" content="2021-05-13T19:01:16.000Z" />
+    <meta property="article:tag" content="Machine learning" />
+    <meta property="article:tag" content="Predictive modeling" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to explain predictive modeling to business managers." />
+    <meta name="twitter:description" content="The simplest explanation about what is predictive modelling, explained at people without tech background." />
+    <meta name="twitter:url" content="http://localhost:2368/explain-predictive-modeling/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2021/05/axis-16x9.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Arthur Moreau" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Machine learning, Predictive modeling" />
+    <meta name="twitter:site" content="@ghost" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1125" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Arthur Moreau&#x27;s blog",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Arthur Moreau",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "http://localhost:2368/author/arthur/",
+        "sameAs": []
+    },
+    "headline": "How to explain predictive modeling to business managers.",
+    "url": "http://localhost:2368/explain-predictive-modeling/",
+    "datePublished": "2020-05-22T13:23:21.000Z",
+    "dateModified": "2021-05-13T19:01:16.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2021/05/axis-16x9.jpg",
+        "width": 2000,
+        "height": 1125
+    },
+    "keywords": "Machine learning, Predictive modeling",
+    "description": "The simplest explanation about what is predictive modelling, explained at people without tech background.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.41" />
+    <link rel="alternate" type="application/rss+xml" title="Arthur Moreau&#x27;s blog" href="../rss.2" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168098396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-168098396-1');
+</script>
+<style>
+    
+.site-main {
+    background: #0D0630;
+} 
+.site-nav-main{
+    background: #0D0630; 
+}
+.page-template .site-main, .post-full-content, .post-template .site-main, .site-main {
+    background: #0D0630;
+}
+.site-header-background {
+    background: #0D0630;
+}
+.site-nav {
+    background: #0D0630;
+}
+    
+.site-header-background:not(.responsive-header-img) .site-nav-left-wrapper:after, .site-nav-main .site-nav-left-wrapper:after {
+    background: linear-gradient(90deg,rgba(9,10,11,0) 0,#0D063000);
+}
+
+.site-nav-main .site-nav-left-wrapper:after {
+    right: 0;
+    background: linear-gradient(to right, color(#0D0630 l(-5%) a(0)) 0%,color(#0D0630 l(-5%)) 0%);
+}
+.site-archive-header .no-image{
+    background: #0D0630;
+    }
+.post-feed {
+    background: #0D0630;
+}
+.read-next {
+    background:     #0D0630;
+}
+.read-next-card {
+    background: #0D0630; 
+}    
+.site-footer{
+    background: #0D0630;
+}
+    
+.subscribe-overlay {      
+     border: 1px solid;
+     background: #0D0630;
+}
+.subscribe-form {
+    border: 1px solid;
+    background: #0D0630;
+}
+.subscribe-email {
+    border: 1px solid;
+    background: #0D0630;
+}
+.subscribe-overlay .subscribe-email {
+    border: 1px solid;  
+}
+.subscribe-form button {
+    height: 46px;      
+}
+.subscribe-form-title {
+   color: rgba(255, 255, 255, 0.75); 
+}
+    
+.post-full-title {
+    color: rgba(255, 255, 255, 0.75);
+}
+    .post-feed  {
+        background: #0D0630;
+    }
+    .post-card-excerpt {
+        color: rgba(255, 255, 255, 0.75);
+    }
+.post-card-title {
+    color: rgba(255, 255, 255, 0.75);
+    }
+
+    .post-full-content {
+    color: rgba(255, 255, 255, 0.75);
+    background: #0D0630;
+    }
+
+    .post-full-custom-excerpt {
+    color: rgba(255, 255, 255, 0.75);
+    }
+    .post-full-content code {
+        color: #fff;
+        background: #0D0630;
+    }
+    
+.post-full-byline-meta h4 a {
+    color: rgba(255, 255, 255, 0.75);
+}
+.post-full-content a {
+    color: rgba(255, 255, 255, 0.75);
+    word-break: break-word;
+    box-shadow: var(--darkgrey) 0 -1px 0 inset;
+    transition: all 0.2s ease-in-out;
+}
+.post-full-content strong,
+.post-full-content em {
+    color: rgba(255, 255, 255, 0.75);
+}
+    
+.post-full-content h1,
+.post-full-content h2,
+.post-full-content h3,
+.post-full-content h4,
+.post-full-content h5,
+.post-full-content h6 {
+    color: rgba(255, 255, 255, 0.75);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+    
+.site-archive-header .no-image {
+    color: rgba(255, 255, 255, 0.75);
+}
+    
+.no-image .author-social-link a {
+    color: rgba(255, 255, 255, 0.75);
+}
+.post-card-byline-content a {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+}
+    
+@media  {
+.page-template .site-main, .post-full-content, .post-template .site-main, .site-main {
+    background: #0D0630;
+    }
+.post-full-custom-excerpt {     
+    color: rgba(255, 255, 255, 0.75);
+    }
+}
+   
+</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://localhost:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="post-template tag-machine-learning tag-predictive-modeling">
+    
+
+
+
+  
+<header class="m-header with-picture js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../index.html" class="m-site-name in-mobile-topbar">
+        Arthur Moreau&#x27;s blog
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-site-name in-desktop-menu">
+                    Arthur Moreau&#x27;s blog
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="../index.html">Home</a>
+    </li>
+    <li class="nav-author">
+      <a href="../about/index.html">Author</a>
+    </li>
+    <li class="nav-contact">
+      <a href="../contact/index.html">Contact</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="../data-petrol/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/data-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="If data is petrol...">
+                                      If data is petrol...
+                                    </h3>
+                                    <span class="m-recent-article__date">20 hours ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../data-driven-customer-segmentation/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/excel-16x9-1.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="how to make data-driven customer segmentation with Excel">
+                                      how to make data-driven customer segmentation with Excel
+                                    </h3>
+                                    <span class="m-recent-article__date">3 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../forecasting-web-traffic/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/google-and-python-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Forecasting web traffic with Python and Google Analytics">
+                                      Forecasting web traffic with Python and Google Analytics
+                                    </h3>
+                                    <span class="m-recent-article__date">7 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../growth-hacking-beyond-bullshit/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/growth-hacking-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Growth Hacking: beyond the bullsh*t">
+                                      Growth Hacking: beyond the bullsh*t
+                                    </h3>
+                                    <span class="m-recent-article__date">a year ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/google-analytics/index.html">Google Analytics</a>
+                            </li>
+                            <li>
+                              <a href="../tag/growth-hacking/index.html">Growth Hacking</a>
+                            </li>
+                            <li>
+                              <a href="../tag/machine-learning/index.html">Machine learning</a>
+                            </li>
+                            <li>
+                              <a href="../tag/marketing/index.html">Marketing</a>
+                            </li>
+                            <li>
+                              <a href="../tag/predictive-modeling/index.html">Predictive modeling</a>
+                            </li>
+                            <li>
+                              <a href="../tag/customer-segmentation/index.html">customer segmentation</a>
+                            </li>
+                            <li>
+                              <a href="../tag/data-driven/index.html">data-driven</a>
+                            </li>
+                            <li>
+                              <a href="../tag/forecasting/index.html">forecasting</a>
+                            </li>
+                            <li>
+                              <a href="../tag/prediction/index.html">prediction</a>
+                            </li>
+                            <li>
+                              <a href="../tag/time-series/index.html">time series</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-aos="fade">
+    <div class="m-hero__picture in-post">
+      <img
+        srcset="../content/images/size/w300/2021/05/axis-16x9.jpgis-16x9.jpg 300w../content/images/size/w600/2021/05/axis-16x9.jpgxis-16x9.jpg 600../content/images/size/w1000/2021/05/axis-16x9.jpgaxis-16x9.jpg 100../content/images/size/w2000/2021/05/axis-16x9.jpg/axis-16x9.jpg 2000w
+        "
+        sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+        src="../content/images/size/w1000/2021/05/axis-16x9.jpg"
+        alt=""
+      />
+    </div>
+    </section>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up"
+          data-aos-delay="300">
+          <div
+            class="l-post-content   js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">How to explain predictive modeling to business managers.</h1>
+              <div class="m-heading__meta">
+                  <a href="../tag/machine-learning/index.html" class="m-heading__meta__tag">Machine learning</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">May 22, 2020</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/explain-predictive-modeling/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=How%20to%20explain%20predictive%20modeling%20to%20business%20managers.&url=http://localhost:2368/explain-predictive-modeling/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <!--kg-card-begin: html-->
+<p><em>Or in other words, how I failed to explain predictive modeling to my boss, learned from multiple trials and simplified the concept in order to convince my boss to invest in it.</em></p>
+
+
+
+<p>“It looked really cool but I didn’t understand half of it”.</p>
+
+
+
+<p>Sh*t…</p>
+
+
+
+<p>He is the only one who cared about giving feedback. Probably the others understood even less.</p>
+
+
+
+<p>All the managers have now left the room. I am alone with the flickering “Questions?” slide taunting me. Of course, they had no questions, I made my presentation “The business benefit of Machine Learning” way too complex.</p>
+
+
+
+<p>Well, at least I looked like a smart guy… I guess. But without an understanding of the project by the key managers, there is no way I’ll get the resources needed.</p>
+
+
+
+<p>So I took a deep breath and got back to work. As a Machine Learning fanatic, it was difficult to believe that my company didn’t tap in its tremendous potential yet. Even worse, they didn’t understand the potential yet.</p>
+
+
+
+<p>Falling heavily on my chair, I started typing again, accepting that many efforts would be needed to push this new idea on the agenda. Since then I spent the hours and here I am again.</p>
+
+
+
+<h1 id="977b">My first step in Machine Learning</h1>
+
+
+
+<p><em>If you can’t explain it simply, then you don’t understand it well enough.<br>&#8211; Albert Einstein &#8211;</em></p>
+
+
+
+<p>After months of diving into the Machine Learning course of the great teacher Andrew Ng and juggling with the data of my company, I finally got it: a predictive model. I was super excited!</p>
+
+
+
+<p>Since the first time I clicked on the “run” of the algorithm, I still get goosebumps of excitation while the results appear! I love it so much: for once, no more guesswork, no opinion of people pretending to be expert! Only the unique truth provided by the machine! And working with the marketing department, guesswork was a daily feed.</p>
+
+
+
+<p>But getting excited is not enough. You also need to understand it deeply. Understand it so much that you can simplify and explain it to the business because the business needs to take the decision. You need to climb the mountain, then go down on the other side to come back on the level of other people.</p>
+
+
+
+<p>Explaining Machine Learning to anyone, to marketing and salespeople, or to people with zero technical background? Yes, it’s possible! Whether you want to understand Machine Learning yourself or want to make other people understand: here is the simplest metaphor of Machine Learning. I polished it by pitching it again and again in front of multiple audiences.</p>
+
+
+
+<p>Once upon a timer was a runner…</p>
+
+
+
+<h1 id="abaa">The race</h1>
+
+
+
+<figure class="wp-block-image"><img src="https://miro.medium.com/max/3481/0*U1iUxfjM8L8XZbyu" alt=""/><figcaption>Photo by&nbsp;<a href="https://unsplash.com/@bradencollum" target="_blank" rel="noreferrer noopener">Braden Collum</a>&nbsp;on&nbsp;<a href="https://unsplash.com/" target="_blank" rel="noreferrer noopener">Unsplash</a></figcaption></figure>
+
+
+
+<p>A drop of sweat rolls down the forehead and bursts on the ground. The runners are in position, tense, waiting for the starting shot. It’s a warm day in May, the sun is shining. The crowd holds its breath, and you are there, in the grandstand, nervous and excited.</p>
+
+
+
+<p>You are an amateur of athletics and often attend races. But still one is even more special than before: you organized it with your team!<br>You even got the help of an intern, who you tasked to conduct the runner registration process at the entrance. For statistical purposes, you ask him to measure “important traits” of each runner without giving clear guidance. “Those stats are not so important, but may have some use later”, you think.</p>
+
+
+
+<p>Boom! The sound of the departure tears you away from your dream! The runners leap out of the starting line. They slide through the 400 meters. The tension reaches its climax. Aaand here he is! The winner of the race! You go down to cheer and celebrate the victory with your team. What a beautiful day in May!</p>
+
+
+
+<p>A few days later, closing the administration of the race in your office, you start looking at the stats. Damn! The intern measured only three things: the weight, the leg muscle size and the… hair length?! Okay, you might not keep this intern, but anyway, you still have this data and the time of each runner to pull out some stats.</p>
+
+
+
+<p>After a few hours, using the measure of the intern and the speed of the runners, you reached some conclusions:<br>&#8211;&nbsp;<strong>Weight:</strong>&nbsp;Neither being too skinny nor too heavy is good. There is an ideal weight, and the closer they are to this weight, the faster they are.<br>&#8211;&nbsp;<strong>Leg muscle size:</strong>&nbsp;Here it’s obvious, the more, the better.<br>&#8211;&nbsp;<strong>Hair length:&nbsp;</strong>Obvious again; it doesn’t influence their speed at all. You can drop this data.</p>
+
+
+
+<p>So the first analysis is done, but you are wondering whether it is correct. You decide to challenge yourself by attending another race and betting against a friend. Each of you will pick a different runner. Maybe these stats can make you earn a few bucks!</p>
+
+
+
+<p>Second race, you are here to test your model! Before the race starts, you inspect the runner closely and pick your winner: ideal weight and the biggest legs. Your friend picked one too heavy, what a fool! You go sit on the grandstand, confident of your choice.</p>
+
+
+
+<p>One hour later, sipping your luxurious cocktail bought with your friend’s money, you realized that you can actually make use of this formula again and again. Maybe even make a living by predicting the winner for every race. Finally, this intern didn’t do such a bad job…right?</p>
+
+
+
+<p>By the way, if you have followed until here, you have successfully understood the core concept behind one Machine Learning technique: the predictive modeling. Let’s connect the dots with our race story.</p>
+
+
+
+<h1 id="da45">The Machine and the runner</h1>
+
+
+
+<figure class="wp-block-image"><img src="https://miro.medium.com/max/3612/0*Pz0TepbDu5RlDVcN" alt=""/><figcaption>Photo by&nbsp;<a href="https://unsplash.com/@nicolasthomas" target="_blank" rel="noreferrer noopener">Nicolas Thomas</a>&nbsp;on&nbsp;<a href="https://unsplash.com" target="_blank" rel="noreferrer noopener">Unsplash</a></figcaption></figure>
+
+
+
+<p>Machine Learning works exactly like the race analysis we did. We first built a model with the data, then we tested it to see whether it is future-proof.</p>
+
+
+
+<p>Let’s go back to the first race. At first, we measured data: weight, leg muscle size, and hair length. Then, at the end of the first race, we compiled the data: 1. hair length was not a useful data category, 2. the best is to be average weight and 3. the more muscle, the better.<br>This is called, in Machine Learning terms, training a model. We already have insights about the first set of data, but not sure if the result can be trusted for new data.</p>
+
+
+
+<p>During the second race, we test the model: we bet on the runner who has an average weight and the most muscle. If he wins, we know our model was built correctly. If he doesn’t, we go back to the training phase and try to build a new model: maybe it’s not so good to have too much leg muscle.<br>This is called, in Machine Learning terms, testing the model. In this phase, it’s essential to use new data to be sure that the insights fit new cases.</p>
+
+
+
+<p>To summarize in one image:</p>
+
+
+
+<figure class="wp-block-image"><img src="https://miro.medium.com/max/1218/1*mNuo7MEGTyISAMK814svwQ.png" alt=""/></figure>
+
+
+
+<p>And here we are! We now have a future-proof model that will help to forecast the winner of the 3rd race and beyond!</p>
+
+
+
+<p>Congrats! You have understood the simplest metaphor of a Machine Learning model: a predictive algorithm! You can now carry the message in your company to push the investment in this field.<br>Think about the huge business potential: You can predict which customers will churn soon, which will become your most loyal customers and which will pay for the soon-to-be-released feature!</p>
+
+
+
+<p>As a side note, for the people ready to start their witch hunt against the Machine: The machine is no fortune teller, and cannot predict exactly who will take what action. But it can give a likelihood of an event happening in the future. As for a runner, we could “only” say he is 90% likely to win the race. But it’s enough to bet some money.</p>
+
+
+
+<p>Be the one who brings innovation to your company!</p>
+
+
+
+<hr class="wp-block-separator"/>
+
+
+
+<p>Thank you for reading! I commit to simplifying more Machine Learning concepts for business people. So if you feel excited about how simple Machine Learning can be explained, don’t hesitate to register for my newsletter.</p>
+<!--kg-card-end: html--><!--kg-card-begin: html--><!-- Begin Mailchimp Signup Form -->
+<link href="http://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
+	/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="https://arthurmoreau.us18.list-manage.com/subscribe/post?u=d7be07c8f1b11ddcbec80d10c&amp;id=89f823ffef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+	<label for="mce-EMAIL">Subscribe</label>
+	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d7be07c8f1b11ddcbec80d10c_89f823ffef" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+
+<!--End mc_embed_signup--><!--kg-card-end: html--><!--kg-card-begin: html--><p>In the same tone, I cannot leave without mentioning Cassie Kozyrkov, Head of Decision Intelligence at Google, who inspired me by her abilities to simplify Machine Learning, and deserves to be mentioned for&nbsp;<a target="_blank" rel="noreferrer noopener" href="https://medium.com/hackernoon/why-businesses-fail-at-machine-learning-fbff41c4d5db">her great writing skills</a>.</p><!--kg-card-end: html-->
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="../tag/machine-learning/index.html" title="Machine learning">Machine learning</a>
+                      </li>
+                      <li>
+                        <a href="../tag/predictive-modeling/index.html" title="Predictive modeling">Predictive modeling</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="../author/arthur/index.html" class="m-author-picture" aria-label="Arthur Moreau">
+                  <div style="background-image: url(http://www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s&);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="../author/arthur/index.html">Arthur Moreau</a>
+              </h4>
+              <ul class="m-author-links">
+              </ul>
+            </div>
+          </div>
+        </section>
+          <section class="m-recommended">
+            <div class="l-wrapper in-recommended">
+              <h3 class="m-section-title in-recommended">Recommended for you</h3>
+              <div class="m-recommended-articles">
+                <div class="m-recommended-slider glide js-recommended-slider">
+                  <div class="glide__track" data-glide-el="track">
+                    <div class="glide__slides">
+                      
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-forecasting tag-google-analytics tag-prediction tag-predictive-modeling tag-time-series">
+    <div class="m-article-card__picture">
+      <a href="../forecasting-web-traffic/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/05/google-and-python-16x9.jpg" loading="lazy" alt="">
+      <a href="../author/arthur/index.html" class="m-article-card__author js-tooltip" aria-label="Arthur Moreau" data-tippy-content="Posted by Arthur Moreau ">
+          <div style="background-image: url(http://www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s&);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/forecasting/index.html" class="m-article-card__tag">forecasting</a>
+      <a href="../forecasting-web-traffic/index.html" class="m-article-card__info-link" aria-label="Forecasting web traffic with Python and Google Analytics">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Forecasting web traffic with Python and Google Analytics">
+            Forecasting web traffic with Python and Google Analytics
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>7 months ago</span>
+          <span>&bull;</span>
+          <span>13 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+                    </div>
+                  </div>
+                  <div data-glide-el="controls" class="glide__arrows js-controls">
+                    <button data-glide-dir="<" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
+                      <span class="icon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    <button data-glide-dir=">" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
+                      <span class="icon-arrow-right" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </article>
+</main>
+
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+        <a href="https://www.facebook.com/ghost" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="icon-facebook" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/ghost" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="../rss.2" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Arthur Moreau&#x27;s blog &copy; 2021</span>
+      <span>&nbsp; &bull; &nbsp;</span>
+      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="../assets/html/javascript.html@v=ae11527b2d.html" rel="jslicense">JavaScript license information</a>
+    </p>
+  </div>
+</footer>
+
+
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../assets/js/manifest.js@v=ae11527b2d"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js@v=ae11527b2d"></script>
+    <script defer src="../assets/js/vendor.js@v=ae11527b2d"></script>
+    <script defer src="../assets/js/app.js@v=ae11527b2d"></script>
+
+      <script defer src="../assets/js/post.js@v=ae11527b2d"></script>
+
+
+    <style>
+  /* The footer links to ghost keep coming back */
+  .site-footer a[href^="https://ghost.org"] { display: none; }
+</style>
+  </body>
+</html>

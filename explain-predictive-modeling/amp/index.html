@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>How to explain predictive modeling to business managers.</title>
+
+    <link rel="canonical" href="../index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="Arthur Moreau&#x27;s blog" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to explain predictive modeling to business managers." />
+    <meta property="og:description" content="The simplest explanation about what is predictive modelling, explained at people without tech background." />
+    <meta property="og:url" content="http://localhost:2368/explain-predictive-modeling/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2021/05/axis-16x9.jpg" />
+    <meta property="article:published_time" content="2020-05-22T13:23:21.000Z" />
+    <meta property="article:modified_time" content="2021-05-13T19:01:16.000Z" />
+    <meta property="article:tag" content="Machine learning" />
+    <meta property="article:tag" content="Predictive modeling" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/ghost" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to explain predictive modeling to business managers." />
+    <meta name="twitter:description" content="The simplest explanation about what is predictive modelling, explained at people without tech background." />
+    <meta name="twitter:url" content="http://localhost:2368/explain-predictive-modeling/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2021/05/axis-16x9.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Arthur Moreau" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Machine learning, Predictive modeling" />
+    <meta name="twitter:site" content="@ghost" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1125" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Arthur Moreau&#x27;s blog",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Arthur Moreau",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "http://localhost:2368/author/arthur/",
+        "sameAs": []
+    },
+    "headline": "How to explain predictive modeling to business managers.",
+    "url": "http://localhost:2368/explain-predictive-modeling/",
+    "datePublished": "2020-05-22T13:23:21.000Z",
+    "dateModified": "2021-05-13T19:01:16.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2021/05/axis-16x9.jpg",
+        "width": 2000,
+        "height": 1125
+    },
+    "keywords": "Machine learning, Predictive modeling",
+    "description": "The simplest explanation about what is predictive modelling, explained at people without tech background.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.41" />
+    <link rel="alternate" type="application/rss+xml" title="Arthur Moreau&#x27;s blog" href="../../rss.2" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: #1292EE;
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: #000;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #dc0050;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="../../index.html">
+                Arthur Moreau&#x27;s blog
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">How to explain predictive modeling to business managers.</h1>
+                <section class="post-meta">
+                    Arthur Moreau -
+                    <time class="post-date" datetime="2020-05-22">22 May 2020</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="http://localhost:2368/content/images/2021/05/axis-16x9.jpg" width="600" height="340" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                
+<p><em>Or in other words, how I failed to explain predictive modeling to my boss, learned from multiple trials and simplified the concept in order to convince my boss to invest in it.</em></p>
+
+
+
+<p>“It looked really cool but I didn’t understand half of it”.</p>
+
+
+
+<p>Sh*t…</p>
+
+
+
+<p>He is the only one who cared about giving feedback. Probably the others understood even less.</p>
+
+
+
+<p>All the managers have now left the room. I am alone with the flickering “Questions?” slide taunting me. Of course, they had no questions, I made my presentation “The business benefit of Machine Learning” way too complex.</p>
+
+
+
+<p>Well, at least I looked like a smart guy… I guess. But without an understanding of the project by the key managers, there is no way I’ll get the resources needed.</p>
+
+
+
+<p>So I took a deep breath and got back to work. As a Machine Learning fanatic, it was difficult to believe that my company didn’t tap in its tremendous potential yet. Even worse, they didn’t understand the potential yet.</p>
+
+
+
+<p>Falling heavily on my chair, I started typing again, accepting that many efforts would be needed to push this new idea on the agenda. Since then I spent the hours and here I am again.</p>
+
+
+
+<h1 id="977b">My first step in Machine Learning</h1>
+
+
+
+<p><em>If you can’t explain it simply, then you don’t understand it well enough.<br />– Albert Einstein –</em></p>
+
+
+
+<p>After months of diving into the Machine Learning course of the great teacher Andrew Ng and juggling with the data of my company, I finally got it: a predictive model. I was super excited!</p>
+
+
+
+<p>Since the first time I clicked on the “run” of the algorithm, I still get goosebumps of excitation while the results appear! I love it so much: for once, no more guesswork, no opinion of people pretending to be expert! Only the unique truth provided by the machine! And working with the marketing department, guesswork was a daily feed.</p>
+
+
+
+<p>But getting excited is not enough. You also need to understand it deeply. Understand it so much that you can simplify and explain it to the business because the business needs to take the decision. You need to climb the mountain, then go down on the other side to come back on the level of other people.</p>
+
+
+
+<p>Explaining Machine Learning to anyone, to marketing and salespeople, or to people with zero technical background? Yes, it’s possible! Whether you want to understand Machine Learning yourself or want to make other people understand: here is the simplest metaphor of Machine Learning. I polished it by pitching it again and again in front of multiple audiences.</p>
+
+
+
+<p>Once upon a timer was a runner…</p>
+
+
+
+<h1 id="abaa">The race</h1>
+
+
+
+<figure class="wp-block-image"><amp-img src="https://miro.medium.com/max/3481/0*U1iUxfjM8L8XZbyu" alt width="3481" height="2321" layout="responsive"></amp-img><figcaption>Photo by <a href="https://unsplash.com/@bradencollum" target="_blank" rel="noreferrer noopener">Braden Collum</a> on <a href="https://unsplash.com/" target="_blank" rel="noreferrer noopener">Unsplash</a></figcaption></figure>
+
+
+
+<p>A drop of sweat rolls down the forehead and bursts on the ground. The runners are in position, tense, waiting for the starting shot. It’s a warm day in May, the sun is shining. The crowd holds its breath, and you are there, in the grandstand, nervous and excited.</p>
+
+
+
+<p>You are an amateur of athletics and often attend races. But still one is even more special than before: you organized it with your team!<br />You even got the help of an intern, who you tasked to conduct the runner registration process at the entrance. For statistical purposes, you ask him to measure “important traits” of each runner without giving clear guidance. “Those stats are not so important, but may have some use later”, you think.</p>
+
+
+
+<p>Boom! The sound of the departure tears you away from your dream! The runners leap out of the starting line. They slide through the 400 meters. The tension reaches its climax. Aaand here he is! The winner of the race! You go down to cheer and celebrate the victory with your team. What a beautiful day in May!</p>
+
+
+
+<p>A few days later, closing the administration of the race in your office, you start looking at the stats. Damn! The intern measured only three things: the weight, the leg muscle size and the… hair length?! Okay, you might not keep this intern, but anyway, you still have this data and the time of each runner to pull out some stats.</p>
+
+
+
+<p>After a few hours, using the measure of the intern and the speed of the runners, you reached some conclusions:<br />– <strong>Weight:</strong> Neither being too skinny nor too heavy is good. There is an ideal weight, and the closer they are to this weight, the faster they are.<br />– <strong>Leg muscle size:</strong> Here it’s obvious, the more, the better.<br />– <strong>Hair length: </strong>Obvious again; it doesn’t influence their speed at all. You can drop this data.</p>
+
+
+
+<p>So the first analysis is done, but you are wondering whether it is correct. You decide to challenge yourself by attending another race and betting against a friend. Each of you will pick a different runner. Maybe these stats can make you earn a few bucks!</p>
+
+
+
+<p>Second race, you are here to test your model! Before the race starts, you inspect the runner closely and pick your winner: ideal weight and the biggest legs. Your friend picked one too heavy, what a fool! You go sit on the grandstand, confident of your choice.</p>
+
+
+
+<p>One hour later, sipping your luxurious cocktail bought with your friend’s money, you realized that you can actually make use of this formula again and again. Maybe even make a living by predicting the winner for every race. Finally, this intern didn’t do such a bad job…right?</p>
+
+
+
+<p>By the way, if you have followed until here, you have successfully understood the core concept behind one Machine Learning technique: the predictive modeling. Let’s connect the dots with our race story.</p>
+
+
+
+<h1 id="da45">The Machine and the runner</h1>
+
+
+
+<figure class="wp-block-image"><amp-img src="https://miro.medium.com/max/3612/0*Pz0TepbDu5RlDVcN" alt width="3612" height="2408" layout="responsive"></amp-img><figcaption>Photo by <a href="https://unsplash.com/@nicolasthomas" target="_blank" rel="noreferrer noopener">Nicolas Thomas</a> on <a href="https://unsplash.com" target="_blank" rel="noreferrer noopener">Unsplash</a></figcaption></figure>
+
+
+
+<p>Machine Learning works exactly like the race analysis we did. We first built a model with the data, then we tested it to see whether it is future-proof.</p>
+
+
+
+<p>Let’s go back to the first race. At first, we measured data: weight, leg muscle size, and hair length. Then, at the end of the first race, we compiled the data: 1. hair length was not a useful data category, 2. the best is to be average weight and 3. the more muscle, the better.<br />This is called, in Machine Learning terms, training a model. We already have insights about the first set of data, but not sure if the result can be trusted for new data.</p>
+
+
+
+<p>During the second race, we test the model: we bet on the runner who has an average weight and the most muscle. If he wins, we know our model was built correctly. If he doesn’t, we go back to the training phase and try to build a new model: maybe it’s not so good to have too much leg muscle.<br />This is called, in Machine Learning terms, testing the model. In this phase, it’s essential to use new data to be sure that the insights fit new cases.</p>
+
+
+
+<p>To summarize in one image:</p>
+
+
+
+<figure class="wp-block-image"><amp-img src="https://miro.medium.com/max/1218/1*mNuo7MEGTyISAMK814svwQ.png" alt width="1218" height="532" layout="responsive"></amp-img></figure>
+
+
+
+<p>And here we are! We now have a future-proof model that will help to forecast the winner of the 3rd race and beyond!</p>
+
+
+
+<p>Congrats! You have understood the simplest metaphor of a Machine Learning model: a predictive algorithm! You can now carry the message in your company to push the investment in this field.<br />Think about the huge business potential: You can predict which customers will churn soon, which will become your most loyal customers and which will pay for the soon-to-be-released feature!</p>
+
+
+
+<p>As a side note, for the people ready to start their witch hunt against the Machine: The machine is no fortune teller, and cannot predict exactly who will take what action. But it can give a likelihood of an event happening in the future. As for a runner, we could “only” say he is 90% likely to win the race. But it’s enough to bet some money.</p>
+
+
+
+<p>Be the one who brings innovation to your company!</p>
+
+
+
+<hr class="wp-block-separator"></hr>
+
+
+
+<p>Thank you for reading! I commit to simplifying more Machine Learning concepts for business people. So if you feel excited about how simple Machine Learning can be explained, don’t hesitate to register for my newsletter.</p>
+
+
+
+<div id="mc_embed_signup">
+
+    <div id="mc_embed_signup_scroll">
+	Subscribe
+	
+    
+    <div aria-hidden="true"></div>
+    <div class="clear"></div>
+    </div>
+
+</div>
+
+<p>In the same tone, I cannot leave without mentioning Cassie Kozyrkov, Head of Decision Intelligence at Google, who inspired me by her abilities to simplify Machine Learning, and deserves to be mentioned for <a target="_blank" rel="noreferrer noopener" href="https://medium.com/hackernoon/why-businesses-fail-at-machine-learning-fbff41c4d5db">her great writing skills</a>.</p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+        <h3>Arthur Moreau&#x27;s blog</h3>
+            <p>Machine Learning meets Marketing</p>
+        <p><a href="../../index.html">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

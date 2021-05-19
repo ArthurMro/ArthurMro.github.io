@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>If data is petrol...</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="../assets/css/app.css@v=ae11527b2d.css" as="style" />
+    <link rel="preload" href="../assets/js/manifest.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../assets/js/vendor.js@v=ae11527b2d" as="script" />
+    <link rel="preload" href="../assets/js/app.js@v=ae11527b2d" as="script" />
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css@v=ae11527b2d.css" as="style" />
+  <link rel="preload" href="../assets/js/post.js@v=ae11527b2d" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2@v=ae11527b2d") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2@v=ae11527b2d") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2@v=ae11527b2d") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff@v=ae11527b2d") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot@101fc3%253Fv=ae11527b2d");
+        src: url("../assets/fonts/icomoon/icomoon.eot@101fc3") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf@101fc3%253Fv=ae11527b2d") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff@101fc3%253Fv=ae11527b2d") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg@101fc3") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css@v=ae11527b2d.css" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css@v=ae11527b2d.css" media="screen" />
+
+
+    
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Arthur Moreau&#x27;s blog" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="If data is petrol..." />
+    <meta property="og:description" content="Data is the new gold. But most of us don&#x27;t understand how and why it has been tagged as priceless by big tech companies. Here is a simple oil metaphor explaining how data works and why it is the new black gold." />
+    <meta property="og:url" content="http://localhost:2368/data-petrol/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2021/05/data-16x9.jpg" />
+    <meta property="article:published_time" content="2021-05-18T20:16:00.000Z" />
+    <meta property="article:modified_time" content="2021-05-19T15:12:57.000Z" />
+    <meta property="article:publisher" content="https://www.facebook.com/ghost" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="If data is petrol..." />
+    <meta name="twitter:description" content="Data is the new gold. But most of us don&#x27;t understand how and why it has been tagged as priceless by big tech companies. Here is a simple oil metaphor explaining how data works and why it is the new black gold." />
+    <meta name="twitter:url" content="http://localhost:2368/data-petrol/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2021/05/data-16x9.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Arthur Moreau" />
+    <meta name="twitter:site" content="@ghost" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1125" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Arthur Moreau&#x27;s blog",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Arthur Moreau",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "http://localhost:2368/author/arthur/",
+        "sameAs": []
+    },
+    "headline": "If data is petrol...",
+    "url": "http://localhost:2368/data-petrol/",
+    "datePublished": "2021-05-18T20:16:00.000Z",
+    "dateModified": "2021-05-19T15:12:57.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2021/05/data-16x9.jpg",
+        "width": 2000,
+        "height": 1125
+    },
+    "description": "Data is the new gold. But most of us don&#x27;t understand how and why it has been tagged as priceless by big tech companies. Here is a simple oil metaphor explaining how data works and why it is the new black gold.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.41" />
+    <link rel="alternate" type="application/rss+xml" title="Arthur Moreau&#x27;s blog" href="../rss.2" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168098396-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-168098396-1');
+</script>
+<style>
+    
+.site-main {
+    background: #0D0630;
+} 
+.site-nav-main{
+    background: #0D0630; 
+}
+.page-template .site-main, .post-full-content, .post-template .site-main, .site-main {
+    background: #0D0630;
+}
+.site-header-background {
+    background: #0D0630;
+}
+.site-nav {
+    background: #0D0630;
+}
+    
+.site-header-background:not(.responsive-header-img) .site-nav-left-wrapper:after, .site-nav-main .site-nav-left-wrapper:after {
+    background: linear-gradient(90deg,rgba(9,10,11,0) 0,#0D063000);
+}
+
+.site-nav-main .site-nav-left-wrapper:after {
+    right: 0;
+    background: linear-gradient(to right, color(#0D0630 l(-5%) a(0)) 0%,color(#0D0630 l(-5%)) 0%);
+}
+.site-archive-header .no-image{
+    background: #0D0630;
+    }
+.post-feed {
+    background: #0D0630;
+}
+.read-next {
+    background:     #0D0630;
+}
+.read-next-card {
+    background: #0D0630; 
+}    
+.site-footer{
+    background: #0D0630;
+}
+    
+.subscribe-overlay {      
+     border: 1px solid;
+     background: #0D0630;
+}
+.subscribe-form {
+    border: 1px solid;
+    background: #0D0630;
+}
+.subscribe-email {
+    border: 1px solid;
+    background: #0D0630;
+}
+.subscribe-overlay .subscribe-email {
+    border: 1px solid;  
+}
+.subscribe-form button {
+    height: 46px;      
+}
+.subscribe-form-title {
+   color: rgba(255, 255, 255, 0.75); 
+}
+    
+.post-full-title {
+    color: rgba(255, 255, 255, 0.75);
+}
+    .post-feed  {
+        background: #0D0630;
+    }
+    .post-card-excerpt {
+        color: rgba(255, 255, 255, 0.75);
+    }
+.post-card-title {
+    color: rgba(255, 255, 255, 0.75);
+    }
+
+    .post-full-content {
+    color: rgba(255, 255, 255, 0.75);
+    background: #0D0630;
+    }
+
+    .post-full-custom-excerpt {
+    color: rgba(255, 255, 255, 0.75);
+    }
+    .post-full-content code {
+        color: #fff;
+        background: #0D0630;
+    }
+    
+.post-full-byline-meta h4 a {
+    color: rgba(255, 255, 255, 0.75);
+}
+.post-full-content a {
+    color: rgba(255, 255, 255, 0.75);
+    word-break: break-word;
+    box-shadow: var(--darkgrey) 0 -1px 0 inset;
+    transition: all 0.2s ease-in-out;
+}
+.post-full-content strong,
+.post-full-content em {
+    color: rgba(255, 255, 255, 0.75);
+}
+    
+.post-full-content h1,
+.post-full-content h2,
+.post-full-content h3,
+.post-full-content h4,
+.post-full-content h5,
+.post-full-content h6 {
+    color: rgba(255, 255, 255, 0.75);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+    
+.site-archive-header .no-image {
+    color: rgba(255, 255, 255, 0.75);
+}
+    
+.no-image .author-social-link a {
+    color: rgba(255, 255, 255, 0.75);
+}
+.post-card-byline-content a {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+}
+    
+@media  {
+.page-template .site-main, .post-full-content, .post-template .site-main, .site-main {
+    background: #0D0630;
+    }
+.post-full-custom-excerpt {     
+    color: rgba(255, 255, 255, 0.75);
+    }
+}
+   
+</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://localhost:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="post-template">
+    
+
+
+
+  
+<header class="m-header with-picture js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../index.html" class="m-site-name in-mobile-topbar">
+        Arthur Moreau&#x27;s blog
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-site-name in-desktop-menu">
+                    Arthur Moreau&#x27;s blog
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="../index.html">Home</a>
+    </li>
+    <li class="nav-author">
+      <a href="../about/index.html">Author</a>
+    </li>
+    <li class="nav-contact">
+      <a href="../contact/index.html">Contact</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/data-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="If data is petrol...">
+                                      If data is petrol...
+                                    </h3>
+                                    <span class="m-recent-article__date">20 hours ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../data-driven-customer-segmentation/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/excel-16x9-1.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="how to make data-driven customer segmentation with Excel">
+                                      how to make data-driven customer segmentation with Excel
+                                    </h3>
+                                    <span class="m-recent-article__date">3 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../forecasting-web-traffic/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/google-and-python-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Forecasting web traffic with Python and Google Analytics">
+                                      Forecasting web traffic with Python and Google Analytics
+                                    </h3>
+                                    <span class="m-recent-article__date">7 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../growth-hacking-beyond-bullshit/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/05/growth-hacking-16x9.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Growth Hacking: beyond the bullsh*t">
+                                      Growth Hacking: beyond the bullsh*t
+                                    </h3>
+                                    <span class="m-recent-article__date">a year ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/google-analytics/index.html">Google Analytics</a>
+                            </li>
+                            <li>
+                              <a href="../tag/growth-hacking/index.html">Growth Hacking</a>
+                            </li>
+                            <li>
+                              <a href="../tag/machine-learning/index.html">Machine learning</a>
+                            </li>
+                            <li>
+                              <a href="../tag/marketing/index.html">Marketing</a>
+                            </li>
+                            <li>
+                              <a href="../tag/predictive-modeling/index.html">Predictive modeling</a>
+                            </li>
+                            <li>
+                              <a href="../tag/customer-segmentation/index.html">customer segmentation</a>
+                            </li>
+                            <li>
+                              <a href="../tag/data-driven/index.html">data-driven</a>
+                            </li>
+                            <li>
+                              <a href="../tag/forecasting/index.html">forecasting</a>
+                            </li>
+                            <li>
+                              <a href="../tag/prediction/index.html">prediction</a>
+                            </li>
+                            <li>
+                              <a href="../tag/time-series/index.html">time series</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-aos="fade">
+    <div class="m-hero__picture in-post">
+      <img
+        srcset="../content/images/size/w300/2021/05/data-16x9.jpgta-16x9.jpg 300w../content/images/size/w600/2021/05/data-16x9.jpgata-16x9.jpg 600../content/images/size/w1000/2021/05/data-16x9.jpgdata-16x9.jpg 100../content/images/size/w2000/2021/05/data-16x9.jpg/data-16x9.jpg 2000w
+        "
+        sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+        src="../content/images/size/w1000/2021/05/data-16x9.jpg"
+        alt=""
+      />
+    </div>
+    </section>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up"
+          data-aos-delay="300">
+          <div
+            class="l-post-content   js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">If data is petrol...</h1>
+              <div class="m-heading__meta">
+                <span class="m-heading__meta__time">May 18, 2021</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/data-petrol/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=If%20data%20is%20petrol...&url=http://localhost:2368/data-petrol/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <p><strong><em>Data is the new gold. But most of us don't understand how and why it has been tagged as priceless by big tech companies. Here is a simple oil metaphor explaining how data works and why it is the new black gold.</em></strong></p><!--kg-card-begin: markdown--><h1 id="itflowsfromitssourcetoourengines">It flows from its source to our engines</h1>
+<!--kg-card-end: markdown--><p>Like petrol, data is buried. Under layers of ground, lays the crude oil that humans need to extract. And it is the same for raw data, buried under technological layers. These pockets of valuable commodities are called sources. Petrol has many different kinds of sources, and the data ones are just as diverse. Data can originate, for instance, from the clicks and taps of website users. These generate data flows.</p><p>Both, to be extracted from their sources, require human efforts. Data, as petrol, is invisible until captured. Where petrol is extracted by huge pumps, data is captured by tiny snippets of code.</p><p>The crude oil going out of the source is mostly captured and conveyed by pipelines. These pipelines lead the oil to a refinery, where it is transformed in gasoline, fuels and other by-products. Once the crude oil is refined the liquid outputs, gasoline and diesel fuels are brought to storage places. The rest of the by-products, all sorts of raw plastics, are sold on the market.</p><p>Like crude oil, raw data is brought by pipeline to a transformation place, the Data Warehouse, then stored in a place called a Database. These steps, for data, are known as ETL: Extract-Transform-Load. Indeed the raw data is extracted from the source, transformed into clean data and then loaded in a Database storage. The by-products of data, statistics and aggregation, can also be sold on Data Marketplaces.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2021/05/refinery-16x9.jpg" class="kg-image" alt srcset="../content/images/size/w600/2021/05/refinery-16x9.jpg 600w, ../content/images/size/w1000/2021/05/refinery-16x9.jpg 1000w, ../content/images/size/w1600/2021/05/refinery-16x9.jpg 1600w, ../content/images/size/w2400/2021/05/refinery-16x9.jpg 2400w" sizes="(min-width: 720px) 720px"><figcaption>Refined data as petrol would be.<em> image from the author</em></figcaption></figure><p>In these oil storages, some analysts will collect metrics about the petrol - such as quantity, pressure and composition - using powerful tools and subsequently compile them in quality reports. These reports are sent to the head of Engineer who will use it to control and improve the oil flows.</p><p>On a data level, this analysis of the metrics is called Data Analysis. It is captured in excel or Dashboards that are delivered to the management team. Thanks to the up-to-date graphs constantly refreshing with hourly data, the management can get insights to steer the business.</p><p>Back to our petrol, after the storage phase most of the fuels make their way to tank stations and then cars. Cars empowers humans to move. Likewise, data goes from a Database via a distributing system to feed our smartphones and apps. Smartphones empower humans to create and discover. Airbnb uses data to make you discover a city map and its remaining rentals. Snapchat uses data to help you create filters.</p><p>Additionally, a big portion of the gasoline and plastic goes to different industries. The fuels power industrial machines which, molding plastic into different shapes, create products to serve society. In the data version, data goes and flows in every department of the company owning it. For instance, the operational department uses the location and logistic data to deliver purchased products to the right address.</p><p>Fuels also go to Research &amp; Development industries. Companies in these industries are building powerful machines that can automate human work, or make it more efficient. Aeroplanes can move humans faster and further thanks to their complex engines - the result of years of work within the Research &amp; Development industries.. On the data side, this is called Data Science. Scientists experiment to find which algorithm will make the product or process more efficient: the machine does the heavy lifting. But as a plane still needs a pilot, sometimes the algorithm needs a human-in-the-loop to prevent potentially wild and unexpected behavior.</p><!--kg-card-begin: markdown--><h2 id="thehumansbehindthecurtain">The humans behind the curtain</h2>
+<!--kg-card-end: markdown--><p>There are many jobs to keep the petrol flowing through the pipelines. Once a source has been found, a whole team will install the pump to extract the crude oil out of its cave. Regarding data, it is mostly the Software Engineer or IT team that will do the job of placing the tracking on a website or an app.</p><p>Then the oil goes off the pipe! There an engineer will be installing the whole pipeline network. This big scale work requires thoughtful planning and intense maintenance. This Installation Engineer is, on the numerical side, known as a Data Engineer. They build the pipeline during the whole trajectory of the data from the data source to the app.</p><p>The refined oil next enters storage and its metrics are examined. In the data realm that is the job of a Data Analyst. Their role is to explore the data and aggregate them in graphs or reports in order to bring concise insights. Indeed proper visualizations help the human brain (i.e. the decision makers) to understand the trends and act on them. A manager reading a graph that clearly displays expenditure can reallocate budget more easily than when given a long thread of excel sheets.</p><p>If the company reaches a certains size, this analyst is split into two sub-analysts. One, liking numbers, measuring the petrol pressure and the other, strong in communication skills, being the translator between the management needs and the metrics to be looked at. This would, in the data term, be the number-loving Data Analyst and the outspoken Business Analyst.</p><p>Established oil refineries have all the tools in place and the head of Oil Engineering knows how to read the thermometer. Still, every day, there is an engineer working on new requests such as installing more accurate thermometers or documenting how it measures heat. Similarly, in a company that is experienced working with data, every plots their graphs with access to readily analyzable data. The person behind the curtain taking care of maintaining the one source of data truth is the<a href="https://blog.getdbt.com/what-is-an-analytics-engineer/"> Analytics Engineer</a>.</p><p>Then at last comes the Scientist of the R&amp;D department. These guys also need hectoliters of oil to run their machines. Think about the plane. They need years of trials to build and develop new machines. But when they succeed, their work expands the boundaries of society by creating new opportunities. In the data world, these are the Data Scientists. They are the ones playing with data to create algorithms for the purpose of widening human possibilities.</p><p>But think about this for a moment: in order to make petrol 95-99% pure, mankind had to work to refine its transformation process. Nowadays, thanks to decades of research, we know the standard process to reach 99% purity without much trial-and-error. Data does not have these decades of research. Consequently, the field does not have the standardized steps to make an algorithm 99% accurate at first try. That is why we have Machine Learning Engineers. They are the ones iteratively pushing the accuracy from 80% towards the 99%.</p><!--kg-card-begin: markdown--><h2 id="concludingthoughts">Concluding thoughts</h2>
+<!--kg-card-end: markdown--><p>Both petrol and data ranges are the high-risk/high-potential assets of mankind. Cars, as well as smartphones, are part of the inventions that shaped human history. Everyone is better off with them, but with their uses came abuses. Abuses called Global Warming and Cambridge Analytica.</p><p>Whereas <a href="https://www.esso.ca/en-ca/fuel-journey">petrol's journey</a> and the threats of CO2 emission are well understood, the journey and threats coming from data are still nascent. We do not yet know the full extent of abuses that can stem from data extraction. But we do know that, as much as the fuel in our rockets, data is mankind's newest route to reaching new moons.</p><hr><p>Thank you for reading my article. I you wish to to have articles about how data helps business growth, please subscribe here below.</p><!--kg-card-begin: html--><!-- Begin Mailchimp Signup Form -->
+<link href="http://cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
+	/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="https://arthurmoreau.us18.list-manage.com/subscribe/post?u=d7be07c8f1b11ddcbec80d10c&amp;id=89f823ffef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+	<label for="mce-EMAIL">Subscribe</label>
+	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_d7be07c8f1b11ddcbec80d10c_89f823ffef" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+
+<!--End mc_embed_signup--><!--kg-card-end: html-->
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="../author/arthur/index.html" class="m-author-picture" aria-label="Arthur Moreau">
+                  <div style="background-image: url(http://www.gravatar.com/avatar/7befaafe2806ff55da8025acf7a65e80?s&);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="../author/arthur/index.html">Arthur Moreau</a>
+              </h4>
+              <ul class="m-author-links">
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="m-recommended">
+          <div class="l-wrapper in-recommended">
+            <h3 class="m-section-title in-recommended">Recommended for you</h3>
+            <div class="m-recommended-articles">
+              <div class="m-recommended-slider glide js-recommended-slider">
+                <div class="glide__track" data-glide-el="track">
+                  <div class="glide__slides">
+                    <div class="m-recommended-slider__item glide__slide">
+                      <div class="m-heading no-margin">
+                        <h3>No posts found</h3>
+                        <p>
+                          Apparently there are no posts at the moment, check again later.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+    </div>
+  </article>
+</main>
+
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+        <a href="https://www.facebook.com/ghost" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="icon-facebook" aria-hidden="true"></span>
+        </a>
+        <a href="https://twitter.com/ghost" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="../rss.2" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Arthur Moreau&#x27;s blog &copy; 2021</span>
+      <span>&nbsp; &bull; &nbsp;</span>
+      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="../assets/html/javascript.html@v=ae11527b2d.html" rel="jslicense">JavaScript license information</a>
+    </p>
+  </div>
+</footer>
+
+
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../assets/js/manifest.js@v=ae11527b2d"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js@v=ae11527b2d"></script>
+    <script defer src="../assets/js/vendor.js@v=ae11527b2d"></script>
+    <script defer src="../assets/js/app.js@v=ae11527b2d"></script>
+
+      <script defer src="../assets/js/post.js@v=ae11527b2d"></script>
+
+
+    <style>
+  /* The footer links to ghost keep coming back */
+  .site-footer a[href^="https://ghost.org"] { display: none; }
+</style>
+  </body>
+</html>
